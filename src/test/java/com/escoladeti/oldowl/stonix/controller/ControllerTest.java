@@ -46,6 +46,19 @@ public class ControllerTest {
         return mvc.perform(builder);
     }
 
+    public ResultActions put(final String url, final Object putMessage) throws Exception {
+        final MockHttpServletRequestBuilder builder = MockMvcRequestBuilders.put(url);
+        builder.content(getJson(putMessage));
+        builder.contentType(new MediaType(MediaType.APPLICATION_JSON.getType(), MediaType.APPLICATION_JSON.getSubtype(),
+                Charset.forName("utf8")));
+
+        return mvc.perform(builder);
+    }
+
+    public ResultActions delete(final String url, final String id) throws Exception {
+        return mvc.perform(MockMvcRequestBuilders.delete(url + "/" + id));
+    }
+
     public Object postParse(final String url, final Object postMessage, final Class clazz) throws Exception {
         final MvcResult result = post(url, postMessage).andReturn();
         return parseJson(result, clazz);
