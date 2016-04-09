@@ -22,7 +22,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @WebAppConfiguration
 @Transactional
-public class PlayerControllerTest extends ConrollerTest {
+public class PlayerControllerTest extends ControllerTest {
 
     @Test
     @Rollback

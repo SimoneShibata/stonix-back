@@ -21,7 +21,7 @@ import java.nio.charset.Charset;
  * Created by tdc on 09/04/16.
  */
 @Service
-public class ConrollerTest {
+public class ControllerTest {
 
     @Autowired
     public WebApplicationContext context;
