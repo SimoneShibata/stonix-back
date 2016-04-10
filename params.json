@@ -1,0 +1,6 @@
+{
+  "name": "Stonix",
+  "tagline": "Projeto Escola de TI 2016",
+  "body": "[![Travis branch](https://img.shields.io/travis/OpenOldOwl/stonix/develop.svg?maxAge=2592000)](https://travis-ci.org/OpenOldOwl/stonix)\r\n[![Coveralls branch](https://img.shields.io/coveralls/OpenOldOwl/stonix/develop.svg?maxAge=2592000)](https://coveralls.io/github/OpenOldOwl/stonix?branch=develop)\r\n[![Dependency Status](https://www.versioneye.com/user/projects/570a4af2fcd19a00415b103b/badge.svg?style=flat)](https://www.versioneye.com/user/projects/570a4af2fcd19a00415b103b)\r\n\r\n[![Github All Releases](https://img.shields.io/github/downloads/OpenOldOwl/stonix/total.svg?maxAge=2592000)](https://github.com/OpenOldOwl/stonix/)\r\n[![GitHub issues](https://img.shields.io/github/issues/OpenOldOwl/stonix.svg)](https://github.com/OpenOldOwl/stonix/issues)\r\n[![GitHub forks](https://img.shields.io/github/forks/OpenOldOwl/stonix.svg)](https://github.com/OpenOldOwl/stonix/network)\r\n[![GitHub stars](https://img.shields.io/github/stars/OpenOldOwl/stonix.svg)](https://github.com/OpenOldOwl/stonix/stargazers)\r\n\r\n\r\nProjeto da Escola de TI 2016\r\n\r\nGrupo #1 :: **OldOwl**\r\n\r\nProjeto :: **Stonix**",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
