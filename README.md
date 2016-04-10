@@ -1,4 +1,8 @@
-Home :: [openoldowl.github.io/stonix](http://openoldowl.github.io/stonix)
+_ [HOME](http://openoldowl.github.io/stonix)
+_ [GITHUB](https://github.com/OpenOldOwl/stonix)
+_ [JENKINS](http://server.bearbone.com.br:8888/)
+_ [TRAVIS](https://travis-ci.org/OpenOldOwl/stonix)
+_
 
 [![Build Status](http://server.bearbone.com.br:8888/buildStatus/icon?job=stonix)](http://server.bearbone.com.br:8888/job/stonix/)
 [![Travis branch](https://img.shields.io/travis/OpenOldOwl/stonix/develop.svg?maxAge=2592000)](https://travis-ci.org/OpenOldOwl/stonix)
@@ -9,7 +13,6 @@ Home :: [openoldowl.github.io/stonix](http://openoldowl.github.io/stonix)
 [![GitHub issues](https://img.shields.io/github/issues/OpenOldOwl/stonix.svg)](https://github.com/OpenOldOwl/stonix/issues)
 [![GitHub forks](https://img.shields.io/github/forks/OpenOldOwl/stonix.svg)](https://github.com/OpenOldOwl/stonix/network)
 [![GitHub stars](https://img.shields.io/github/stars/OpenOldOwl/stonix.svg)](https://github.com/OpenOldOwl/stonix/stargazers)
-
 
 Projeto da Escola de TI 2016
 
