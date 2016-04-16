@@ -1,16 +1,21 @@
 package com.escoladeti.oldowl.stonix.controller;
 
 import com.escoladeti.oldowl.stonix.model.Comment;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import javax.transaction.Transactional;
+import java.nio.charset.Charset;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -75,5 +80,20 @@ public class CommentControllerTest extends ControllerTest {
                 .andReturn();
         final Comment[] persistedAll = (Comment[]) parseJson(resultGet, Comment[].class);
         Assert.assertArrayEquals("Objetos não são iguais", expected, persistedAll);
+    }
+
+    @Test(expected = JsonMappingException.class)
+    @Rollback
+    public void postOneAndFail() throws Exception {
+        final MockHttpServletRequestBuilder builder = MockMvcRequestBuilders.post(CommentController.MAPPING);
+        builder.content("{\"description\":\"Descrição do Comentario\",\"created\":\"DATA_INVALIDA\"}");
+        builder.contentType(new MediaType(MediaType.APPLICATION_JSON.getType(), MediaType.APPLICATION_JSON.getSubtype(),
+                Charset.forName("utf8")));
+
+        final MvcResult result = mvc.perform(builder)
+                .andReturn();
+
+        final Comment persisted = (Comment) parseJson(result, Comment.class);
+        Assert.assertEquals("Objetos não são iguais", new Comment(), persisted);
     }
 }
