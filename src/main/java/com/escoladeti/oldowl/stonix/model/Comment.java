@@ -2,6 +2,8 @@ package com.escoladeti.oldowl.stonix.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -12,6 +14,8 @@ public class Comment {
     @Id
     private final String id;
     private String description;
+    @NotNull
+    private Date created;
 
     public Comment() {
         id = UUID.randomUUID().toString();
@@ -29,18 +33,30 @@ public class Comment {
         this.description = description;
     }
 
+    public Date getCreated() {
+        return created;
+    }
+
+    public void setCreated(final Date created) {
+        this.created = created;
+    }
+
     @Override
     public boolean equals(final Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
         final Comment comment = (Comment) o;
-        return description != null ? description.equals(comment.description) : comment.description == null;
+
+        if (description != null ? !description.equals(comment.description) : comment.description != null) return false;
+        return created != null ? created.equals(comment.created) : comment.created == null;
     }
 
     @Override
     public int hashCode() {
-        return description != null ? description.hashCode() : 0;
+        int result = description != null ? description.hashCode() : 0;
+        result = 31 * result + (created != null ? created.hashCode() : 0);
+        return result;
     }
 
     @Override
@@ -48,6 +64,7 @@ public class Comment {
         return "Comment{" +
                 "id='" + id + '\'' +
                 ", description='" + description + '\'' +
+                ", created=" + created +
                 '}';
     }
 }

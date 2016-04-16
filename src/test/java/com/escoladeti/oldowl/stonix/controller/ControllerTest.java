@@ -1,6 +1,5 @@
 package com.escoladeti.oldowl.stonix.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
 import org.mockito.MockitoAnnotations;
@@ -59,26 +58,12 @@ public class ControllerTest {
         return mvc.perform(MockMvcRequestBuilders.delete(url + "/" + id));
     }
 
-    public Object postParse(final String url, final Object postMessage, final Class clazz) throws Exception {
-        final MvcResult result = post(url, postMessage).andReturn();
-        return parseJson(result, clazz);
+    public String getJson(final Object postMessage) throws Exception {
+        return new ObjectMapper().writeValueAsString(postMessage);
     }
 
-    public String getJson(final Object postMessage) {
-        try {
-            return new ObjectMapper().writeValueAsString(postMessage);
-        } catch (JsonProcessingException e) {
-            return "ERROR PARSING :: " + postMessage.toString();
-        }
-    }
-
-    public Object parseJson(final MvcResult result, final Class clazz) {
-        try {
-            final String content = result.getResponse().getContentAsString();
-            return new ObjectMapper().readValue(content, clazz);
-        } catch (Throwable e) {
-            e.printStackTrace();
-            return null;
-        }
+    public Object parseJson(final MvcResult result, final Class clazz) throws Exception {
+        final String content = result.getResponse().getContentAsString();
+        return new ObjectMapper().readValue(content, clazz);
     }
 }
