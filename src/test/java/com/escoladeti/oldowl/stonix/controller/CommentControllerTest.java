@@ -16,6 +16,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import javax.transaction.Transactional;
 import java.nio.charset.Charset;
+import java.util.Date;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -62,13 +63,12 @@ public class CommentControllerTest extends ControllerTest {
     public void postOneAndGet() throws Exception {
         final Comment expected1 = new Comment();
         expected1.setDescription("Descrição do Objeto 1");
+        expected1.setCreated(new Date());
         final Comment[] expected = new Comment[]{
                 expected1
         };
 
-        final Comment comment = new Comment();
-        comment.setDescription("Descrição do Objeto 1");
-        final MvcResult result = post(CommentController.MAPPING, comment)
+        final MvcResult result = post(CommentController.MAPPING, expected1)
                 .andExpect(status().isCreated())
                 .andReturn();
 
