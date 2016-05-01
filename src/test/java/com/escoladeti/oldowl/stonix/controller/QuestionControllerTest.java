@@ -38,7 +38,7 @@ public class QuestionControllerTest extends ControllerTest {
 
     @Test
     @Rollback
-    public void postOneUser() throws Exception {
+    public void postOneQuestion() throws Exception {
         final Question expected = new Question();
         expected.setTitle("Title 1");
         expected.setDescription("Description 1");
@@ -57,7 +57,7 @@ public class QuestionControllerTest extends ControllerTest {
 
     @Test
     @Rollback
-    public void postOneUserAndGet() throws Exception {
+    public void postOneQuestionAndGet() throws Exception {
         final Question questionExpected = new Question();
         questionExpected.setTitle("Title 2");
         questionExpected.setDescription("Description 2");
@@ -83,7 +83,7 @@ public class QuestionControllerTest extends ControllerTest {
 
     @Test
     @Rollback
-    public void postOneUserAndDeleteAndGet() throws Exception {
+    public void postOneQuestionAndDeleteAndGet() throws Exception {
         final Question questionExpected = new Question();
         questionExpected.setTitle("Title 3");
         questionExpected.setDescription("Description 3");
@@ -121,7 +121,7 @@ public class QuestionControllerTest extends ControllerTest {
 
     @Test
     @Rollback
-    public void postOneUserAndPutAndGet() throws Exception {
+    public void postOneQuestionAndPutAndGet() throws Exception {
         final Question questionExpected = new Question();
         questionExpected.setTitle("Title 4");
         questionExpected.setDescription("Description 4");
@@ -144,7 +144,7 @@ public class QuestionControllerTest extends ControllerTest {
         Question[] persisted = (Question[]) parseJson(result, Question[].class);
         Assert.assertArrayEquals("get is not equals", expected, persisted);
 
-        final Question question1 = new Question();
+        final Question question1 = persisted[0];
         question1.setTitle("Title 4 - putok");
         question1.setDescription("Description 4 - putok");
 

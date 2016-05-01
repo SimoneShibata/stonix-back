@@ -1,5 +1,8 @@
 package com.escoladeti.oldowl.stonix.model;
 
+import com.google.common.base.MoreObjects;
+import com.google.common.base.Objects;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.util.UUID;
@@ -38,26 +41,29 @@ public class Question {
         this.description = description;
     }
 
+
     @Override
-    public boolean equals(final Object o) {
+    public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        final Question question = (Question) o;
-        return id != null ? id.equals(question.id) : question.id == null;
+        Question that = (Question) o;
+        return Objects.equal(this.title, that.title) &&
+                Objects.equal(this.description, that.description);
     }
 
     @Override
     public int hashCode() {
-        return id != null ? id.hashCode() : 0;
+        return Objects.hashCode(title, description);
     }
+
 
     @Override
     public String toString() {
-        return "Question{" +
-                "id='" + id + '\'' +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                '}';
+        return MoreObjects.toStringHelper(this)
+                .add("id", id)
+                .add("title", title)
+                .add("description", description)
+                .toString();
     }
 }
