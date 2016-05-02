@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -25,7 +24,6 @@ public class QuestionController {
 
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<List<Question>> getAll() {
-        repository.save(new Question("TITULO : " + new Date().toString(), "DESCRIÇÃO :" + new Date().toString()));
         return new ResponseEntity<>(repository.findAll(), HttpStatus.OK);
     }
 
