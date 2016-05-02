@@ -21,6 +21,12 @@ public class Question {
         this.id = UUID.randomUUID().toString();
     }
 
+    public Question(final String title, final String description) {
+        this();
+        this.title = title;
+        this.description = description;
+    }
+
     public String getId() {
         return id;
     }
