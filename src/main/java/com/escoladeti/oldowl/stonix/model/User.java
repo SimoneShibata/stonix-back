@@ -2,6 +2,7 @@ package com.escoladeti.oldowl.stonix.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -12,7 +13,7 @@ public class User {
     @Id
     private final String id;
     private String name;
-    private String earth;
+    private Date birth;
     private String nick;
     private String email;
     private String phone;
@@ -34,13 +35,9 @@ public class User {
         this.name = name;
     }
 
-    public String getEarth() {
-        return earth;
-    }
+    public void setBirth(final Date birth){this.birth = birth;}
 
-    public void setEarth(final String earth) {
-        this.earth = earth;
-    }
+    public Date getBirth(){return birth;}
 
     public String getNick() {
         return nick;
@@ -87,11 +84,10 @@ public class User {
         return "User{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
-                ", earth='" + earth + '\'' +
+                ", birth='" + birth + '\'' +
                 ", nick='" + nick + '\'' +
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
                 '}';
     }
-
 }

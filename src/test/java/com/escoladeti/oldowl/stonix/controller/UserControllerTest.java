@@ -12,6 +12,7 @@ import org.springframework.test.web.servlet.MvcResult;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -39,16 +40,17 @@ public class UserControllerTest extends ControllerTest {
     @Test
     @Rollback
     public void postOneUser() throws Exception {
+        Date data = new Date(1995,06,12);
         final User expected = new User();
         expected.setName("User 1");
-        expected.setEarth("Narnia");
+        expected.setBirth(data);
         expected.setNick("FuckYeah");
         expected.setEmail("user@user.com");
         expected.setPhone("99521921");
 
         final User user = new User();
         user.setName("User 1");
-        user.setEarth("Narnia");
+        user.setBirth(data);
         user.setNick("FuckYeah");
         user.setEmail("user@user.com");
         user.setPhone("99521921");
@@ -64,9 +66,10 @@ public class UserControllerTest extends ControllerTest {
     @Test
     @Rollback
     public void postOneUserAndGet() throws Exception {
+        Date data = new Date(1995,06,12);
         final User userExpected = new User();
         userExpected.setName("User 1");
-        userExpected.setEarth("Narnia");
+        userExpected.setBirth(data);
         userExpected.setNick("FuckYeah");
         userExpected.setEmail("user@user.com");
         userExpected.setPhone("99521921");
@@ -77,7 +80,7 @@ public class UserControllerTest extends ControllerTest {
 
         final User user = new User();
         user.setName("User 1");
-        user.setEarth("Narnia");
+        user.setBirth(data);
         user.setNick("FuckYeah");
         user.setEmail("user@user.com");
         user.setPhone("99521921");
@@ -96,9 +99,10 @@ public class UserControllerTest extends ControllerTest {
     @Test
     @Rollback
     public void postOneUserAndDeleteAndGet() throws Exception {
+        Date data = new Date(1995,06,12);
         final User userExpected = new User();
         userExpected.setName("User 1");
-        userExpected.setEarth("Narnia");
+        userExpected.setBirth(data);
         userExpected.setNick("FuckYeah");
         userExpected.setEmail("user@user.com");
         userExpected.setPhone("99521921");
@@ -109,7 +113,7 @@ public class UserControllerTest extends ControllerTest {
 
         final User user = new User();
         user.setName("User 1");
-        user.setEarth("Narnia");
+        user.setBirth(data);
         user.setNick("FuckYeah");
         user.setEmail("user@user.com");
         user.setPhone("99521921");
@@ -140,9 +144,10 @@ public class UserControllerTest extends ControllerTest {
     @Test
     @Rollback
     public void postOneUserAndPutAndGet() throws Exception {
+        Date data = new Date(1995,06,12);
         final User userExpected = new User();
         userExpected.setName("User 1");
-        userExpected.setEarth("Narnia");
+        userExpected.setBirth(data);
         userExpected.setNick("FuckYeah");
         userExpected.setEmail("user@user.com");
         userExpected.setPhone("99521921");
@@ -152,7 +157,7 @@ public class UserControllerTest extends ControllerTest {
 
         final User user = new User();
         user.setName("User 1");
-        user.setEarth("Narnia");
+        user.setBirth(data);
         user.setNick("FuckYeah");
         user.setEmail("user@user.com");
         user.setPhone("99521921");
@@ -169,7 +174,7 @@ public class UserControllerTest extends ControllerTest {
 
         final User user1 = persisted[0];
         user1.setName("New User");
-        user1.setEarth("Fedora");
+        user1.setBirth(data);
         user1.setNick("NotForgive");
         user1.setEmail("new@user.com");
         user1.setPhone("naotembeagle");
@@ -179,7 +184,7 @@ public class UserControllerTest extends ControllerTest {
 
         final User user1Expected = new User();
         user1Expected.setName("New User");
-        user1Expected.setEarth("Fedora");
+        user1Expected.setBirth(data);
         user1Expected.setNick("NotForgive");
         user1Expected.setEmail("new@user.com");
         user1Expected.setPhone("naotembeagle");
