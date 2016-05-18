@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/entities/answer.yaml
+  - include:
+      file: db/changelog/entities/comment.yaml
+  - include:
+      file: db/changelog/entities/evaluation.yaml
+  - include:
+      file: db/changelog/entities/knowledge_area.yaml
