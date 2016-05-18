@@ -28,7 +28,7 @@ public class KnowledgeArea {
         return name;
     }
 
-    public void setName(final String nome) {
+    public void setName(final String name) {
         this.name = name;
     }
 
