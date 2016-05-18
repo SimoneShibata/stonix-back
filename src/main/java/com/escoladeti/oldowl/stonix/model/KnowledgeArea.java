@@ -13,7 +13,6 @@ import java.util.UUID;
 public class KnowledgeArea {
     @Id
     private final String id;
-
     private String name;
 
     public KnowledgeArea() {

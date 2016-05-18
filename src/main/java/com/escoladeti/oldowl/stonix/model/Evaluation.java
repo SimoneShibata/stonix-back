@@ -14,8 +14,11 @@ import java.util.UUID;
 public class Evaluation {
     @Id
     private final String id;
-
     private Date created;
+
+    public Evaluation() {
+        this.id = UUID.randomUUID().toString();
+    }
 
     public Date getCreated() {
         return created;
@@ -27,10 +30,6 @@ public class Evaluation {
 
     public String getId() {
         return id;
-    }
-
-    public Evaluation() {
-        this.id = UUID.randomUUID().toString();
     }
 
     @Override

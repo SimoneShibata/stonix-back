@@ -27,7 +27,6 @@ public class User {
     }
 
     public String getName() {
-
         return name;
     }
 
@@ -62,7 +61,6 @@ public class User {
     public void setPhone(final String phone) {
         this.phone = phone;
     }
-
 
     @Override
     public boolean equals(final Object o) {

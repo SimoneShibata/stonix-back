@@ -35,7 +35,6 @@ public class Player {
         if (o == null || getClass() != o.getClass()) return false;
 
         final Player player = (Player) o;
-
         return name != null ? name.equals(player.name) : player.name == null;
     }
 
