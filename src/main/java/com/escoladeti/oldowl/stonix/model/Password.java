@@ -14,8 +14,11 @@ import java.util.UUID;
 public class Password {
     @Id
     private final String id;
-
     private String value;
+
+    public Password() {
+        this.id = UUID.randomUUID().toString();
+    }
 
     public String getId() {
         return id;
@@ -29,9 +32,6 @@ public class Password {
         this.value = value;
     }
 
-    public Password() {
-        this.id = UUID.randomUUID().toString();
-    }
     @Override
     public int hashCode() {
         return super.hashCode();

@@ -7,3 +7,11 @@ databaseChangeLog:
       file: db/changelog/entities/evaluation.yaml
   - include:
       file: db/changelog/entities/knowledge_area.yaml
+  - include:
+      file: db/changelog/entities/password.yaml
+  - include:
+      file: db/changelog/entities/player.yaml
+  - include:
+      file: db/changelog/entities/question.yaml
+  - include:
+      file: db/changelog/entities/user.yaml
