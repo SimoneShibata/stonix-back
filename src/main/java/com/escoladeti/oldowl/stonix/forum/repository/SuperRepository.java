@@ -1,7 +1,6 @@
-package com.escoladeti.oldowl.stonix.repository;
+package com.escoladeti.oldowl.stonix.forum.repository;
 
-import com.escoladeti.oldowl.stonix.exception.DontUseException;
-import com.escoladeti.oldowl.stonix.model.SuperEntity;
+import com.escoladeti.oldowl.stonix.forum.model.SuperEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.NoRepositoryBean;
 
@@ -15,8 +14,15 @@ public interface SuperRepository<T extends SuperEntity> extends JpaRepository<T,
 
     List<T> findByDeadIsFalse();
 
+    T findByIdAndDeadIsFalse(final String id);
+
     @Override
     default List<T> findAll() {
-        throw new DontUseException();
+        return findByDeadIsFalse();
+    }
+
+    @Override
+    default T findOne(final String id) {
+        return findByIdAndDeadIsFalse(id);
     }
 }

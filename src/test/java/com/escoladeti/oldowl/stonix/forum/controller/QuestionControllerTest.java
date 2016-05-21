@@ -1,6 +1,6 @@
-package com.escoladeti.oldowl.stonix.controller;
+package com.escoladeti.oldowl.stonix.forum.controller;
 
-import com.escoladeti.oldowl.stonix.model.Question;
+import com.escoladeti.oldowl.stonix.forum.model.Question;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,7 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @WebAppConfiguration
 @Transactional
-public class QuestionControllerTest extends ControllerTest {
+public class QuestionControllerTest extends SuperControllerTest {
 
     @Test
     @Rollback
@@ -172,6 +172,6 @@ public class QuestionControllerTest extends ControllerTest {
     @Rollback
     public void testTryToDeleteInvalidId() throws Exception {
         delete(QuestionController.MAPPING, "123")
-                .andExpect(status().isNotAcceptable());
+                .andExpect(status().isNotFound());
     }
 }

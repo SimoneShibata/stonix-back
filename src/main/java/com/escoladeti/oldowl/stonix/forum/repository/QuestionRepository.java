@@ -1,7 +1,6 @@
-package com.escoladeti.oldowl.stonix.repository;
+package com.escoladeti.oldowl.stonix.forum.repository;
 
-import com.escoladeti.oldowl.stonix.model.Question;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.escoladeti.oldowl.stonix.forum.model.Question;
 import org.springframework.stereotype.Repository;
 
 /**

@@ -1,4 +1,4 @@
-package com.escoladeti.oldowl.stonix.controller;
+package com.escoladeti.oldowl.stonix.forum.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
@@ -20,7 +20,7 @@ import java.nio.charset.Charset;
  * Created by tdc on 09/04/16.
  */
 @Service
-public class ControllerTest {
+public class SuperControllerTest {
 
     @Autowired
     public WebApplicationContext context;

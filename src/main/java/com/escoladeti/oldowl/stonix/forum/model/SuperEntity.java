@@ -1,4 +1,4 @@
-package com.escoladeti.oldowl.stonix.model;
+package com.escoladeti.oldowl.stonix.forum.model;
 
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
@@ -25,8 +25,9 @@ public class SuperEntity {
         return id;
     }
 
-    public void kill() {
+    public boolean kill() {
         this.dead = true;
+        return true;
     }
 
     public Boolean getDead() {
