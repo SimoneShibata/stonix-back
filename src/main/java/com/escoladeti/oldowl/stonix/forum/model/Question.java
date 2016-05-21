@@ -1,34 +1,21 @@
-package com.escoladeti.oldowl.stonix.model;
+package com.escoladeti.oldowl.stonix.forum.model;
 
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
-import java.util.UUID;
 
 /**
  * Created by tdc on 01/05/16.
  */
 @Entity
-public class Question {
-    @Id
-    private final String id;
+public class Question extends SuperEntity {
+
     private String title;
     private String description;
 
     public Question() {
-        this.id = UUID.randomUUID().toString();
-    }
-
-    public Question(final String title, final String description) {
-        this();
-        this.title = title;
-        this.description = description;
-    }
-
-    public String getId() {
-        return id;
+        super();
     }
 
     public String getTitle() {
@@ -62,11 +49,10 @@ public class Question {
         return Objects.hashCode(title, description);
     }
 
-
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("id", id)
+                .add("id", getId())
                 .add("title", title)
                 .add("description", description)
                 .toString();
