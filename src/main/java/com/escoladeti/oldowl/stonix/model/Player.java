@@ -8,17 +8,11 @@ import java.util.UUID;
  * Created by tdc on 09/04/16.
  */
 @Entity
-public class Player {
-    @Id
-    private final String id;
+public class Player extends SuperEntity {
     private String name;
 
     public Player() {
-        id = UUID.randomUUID().toString();
-    }
-
-    public String getId() {
-        return id;
+       super();
     }
 
     public String getName() {
@@ -46,7 +40,7 @@ public class Player {
     @Override
     public String toString() {
         return "Player{" +
-                "id='" + id + '\'' +
+                "id='" + getId() + '\'' +
                 ", name='" + name + '\'' +
                 '}';
     }

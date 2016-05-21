@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
  * Created by Felipe on 13/05/2016.
  */
 @Repository
-public interface KnowledgeAreaRepository extends JpaRepository<KnowledgeArea, String>{
+public interface KnowledgeAreaRepository extends SuperRepository<KnowledgeArea>{
 }

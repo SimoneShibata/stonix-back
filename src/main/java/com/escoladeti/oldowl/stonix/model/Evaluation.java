@@ -11,13 +11,11 @@ import java.util.UUID;
  * Created by Felipe on 13/05/2016.
  */
 @Entity
-public class Evaluation {
-    @Id
-    private final String id;
+public class Evaluation extends SuperEntity {
     private Date created;
 
     public Evaluation() {
-        this.id = UUID.randomUUID().toString();
+        super();
     }
 
     public Date getCreated() {
@@ -26,10 +24,6 @@ public class Evaluation {
 
     public void setCreated(final Date created) {
         this.created = created;
-    }
-
-    public String getId() {
-        return id;
     }
 
     @Override

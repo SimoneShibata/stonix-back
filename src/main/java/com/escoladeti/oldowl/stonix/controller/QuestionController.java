@@ -24,7 +24,7 @@ public class QuestionController {
 
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<List<Question>> getAll() {
-        return new ResponseEntity<>(repository.findAll(), HttpStatus.OK);
+        return new ResponseEntity<>(repository.findByDeadIsFalse(), HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.POST)
@@ -34,10 +34,12 @@ public class QuestionController {
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
     public ResponseEntity<Question> delete(@PathVariable("id") final String id) {
-        if (id == null || repository.findOne(id) == null)
+        final Question question = repository.findOne(id);
+        if (id == null || question == null)
             return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
 
-        repository.delete(id);
+        question.kill();
+        repository.save(question);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

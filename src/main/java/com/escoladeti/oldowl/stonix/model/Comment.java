@@ -10,19 +10,13 @@ import java.util.UUID;
  * Created by tdc on 15/04/16.
  */
 @Entity
-public class Comment {
-    @Id
-    private final String id;
+public class Comment extends SuperEntity {
     private String description;
     @NotNull
     private Date created;
 
     public Comment() {
-        id = UUID.randomUUID().toString();
-    }
-
-    public String getId() {
-        return id;
+        super();
     }
 
     public String getDescription() {
@@ -62,7 +56,7 @@ public class Comment {
     @Override
     public String toString() {
         return "Comment{" +
-                "id='" + id + '\'' +
+                "id='" + getId() + '\'' +
                 ", description='" + description + '\'' +
                 ", created=" + created +
                 '}';

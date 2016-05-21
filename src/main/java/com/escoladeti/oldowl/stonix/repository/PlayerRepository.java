@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
  * Created by tdc on 09/04/16.
  */
 @Repository
-public interface PlayerRepository extends JpaRepository<Player, String> {
+public interface PlayerRepository extends SuperRepository<Player> {
 }

@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
  * Created by Felipe on 16/05/2016.
  */
 @Repository
-public interface PasswordRepository extends JpaRepository<Password, String>{
+public interface PasswordRepository extends SuperRepository<Password>{
 }

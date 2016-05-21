@@ -11,17 +11,11 @@ import java.util.UUID;
  */
 
 @Entity
-public class Password {
-    @Id
-    private final String id;
+public class Password extends SuperEntity {
     private String value;
 
     public Password() {
-        this.id = UUID.randomUUID().toString();
-    }
-
-    public String getId() {
-        return id;
+       super();
     }
 
     public String getValue() {

@@ -5,23 +5,18 @@ import com.google.common.base.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
 import java.util.UUID;
 
 /**
  * Created by tdc on 01/05/16.
  */
 @Entity
-public class Answer {
-    @Id
-    private final String id;
+public class Answer extends SuperEntity {
     private String description;
 
     public Answer() {
-        this.id = UUID.randomUUID().toString();
-    }
-
-    public String getId() {
-        return id;
+        super();
     }
 
     public String getDescription() {
@@ -51,7 +46,7 @@ public class Answer {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("id", id)
+                .add("id", getId())
                 .add("description", description)
                 .toString();
     }

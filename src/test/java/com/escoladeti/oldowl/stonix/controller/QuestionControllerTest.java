@@ -26,6 +26,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebAppConfiguration
 @Transactional
 public class QuestionControllerTest extends ControllerTest {
+
     @Test
     @Rollback
     public void testGetAllClean() throws Exception {

@@ -10,17 +10,11 @@ import java.util.UUID;
  * Created by Felipe on 13/05/2016.
  */
 @Entity
-public class KnowledgeArea {
-    @Id
-    private final String id;
+public class KnowledgeArea extends SuperEntity {
     private String name;
 
     public KnowledgeArea() {
-        this.id = UUID.randomUUID().toString();
-    }
-
-    public String getId() {
-        return id;
+        super();
     }
 
     public String getName() {

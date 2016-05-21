@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
  * Created by tdc on 09/04/16.
  */
 @Repository
-public interface QuestionRepository extends JpaRepository<Question, String> {
+public interface QuestionRepository extends SuperRepository<Question> {
 }

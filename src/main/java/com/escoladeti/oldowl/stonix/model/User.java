@@ -9,9 +9,7 @@ import java.util.UUID;
  * Created by Felipe on 09/04/2016.
  */
 @Entity
-public class User {
-    @Id
-    private final String id;
+public class User  extends SuperEntity {
     private String name;
     private Date birth;
     private String nick;
@@ -19,11 +17,7 @@ public class User {
     private String phone;
 
     public User() {
-        id = UUID.randomUUID().toString();
-    }
-
-    public String getId() {
-        return id;
+        super();
     }
 
     public String getName() {
@@ -80,7 +74,7 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "id='" + id + '\'' +
+                "id='" + getId() + '\'' +
                 ", name='" + name + '\'' +
                 ", birth='" + birth + '\'' +
                 ", nick='" + nick + '\'' +
