@@ -1,0 +1,7 @@
+println project.getName() + ' :: [PROFILE] :: test'
+
+dependencies {
+    runtime('com.h2database:h2')
+}
+
+bootRun.systemProperty 'spring.profiles.active', 'test'

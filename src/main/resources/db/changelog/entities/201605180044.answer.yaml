@@ -18,16 +18,3 @@ databaseChangeLog:
                   type: varchar(255)
                   constraints:
                     nullable: false
-#  - changeSet:
-#      id: 201605180045
-#      author: tiago.couto
-#      changes:
-#        - insert:
-#            tableName: answer
-#            columns:
-#              - column:
-#                  name: id
-#                  value: 1
-#              - column:
-#                  name: description
-#                  value: Descricao 01

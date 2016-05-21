@@ -14,8 +14,17 @@ _
 [![GitHub forks](https://img.shields.io/github/forks/OpenOldOwl/stonix.svg)](https://github.com/OpenOldOwl/stonix/network)
 [![GitHub stars](https://img.shields.io/github/stars/OpenOldOwl/stonix.svg)](https://github.com/OpenOldOwl/stonix/stargazers)
 
-Projeto da Escola de TI 2016
+production mode
 
-Grupo #1 :: **OldOwl**
+    gradle
+    clean core production bootRepackage bootRun
 
-Projeto :: **Stonix**
+development mode
+
+    gradle
+    clean core development bootRun
+
+test mode
+
+    gradle
+    clean core alltests test

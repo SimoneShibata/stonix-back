@@ -1,0 +1,7 @@
+println project.getName() + ' :: [PROFILE] :: production'
+
+dependencies {
+    runtime('mysql:mysql-connector-java')
+}
+
+bootRun.systemProperty 'spring.profiles.active', 'prod'

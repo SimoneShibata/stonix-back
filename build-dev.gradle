@@ -1,0 +1,7 @@
+println project.getName() + ' :: [PROFILE] :: dev'
+
+dependencies {
+    runtime('com.h2database:h2')
+}
+
+bootRun.systemProperty 'spring.profiles.active', 'dev'
