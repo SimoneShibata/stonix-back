@@ -2,6 +2,6 @@ language: java
 jdk:
   - oraclejdk8
 script:
-  - ./gradlew clean core alltests test
+  - ./gradlew clean alltests test
 after_success:
   - ./gradlew cobertura coveralls

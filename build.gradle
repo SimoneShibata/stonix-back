@@ -64,10 +64,6 @@ task wrapper(type: Wrapper) {
             TASKS
   */
 
-task core << {
-    apply from: rootProject.file('build-core.gradle');
-}
-
 task production << {
     apply from: rootProject.file('build-prod.gradle');
 }
