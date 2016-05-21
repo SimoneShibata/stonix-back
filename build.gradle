@@ -23,42 +23,22 @@ apply plugin: "java"
 apply plugin: "eclipse"
 apply plugin: "spring-boot"
 
-jar {
-    baseName = "stonix"
-    version = "0.0.3-SNAPSHOT"
-}
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+/*
+            TASKS
+  */
 
-repositories {
-    mavenCentral()
-    maven { url "https://repo.spring.io/snapshot" }
-    maven { url "https://repo.spring.io/milestone" }
+task core << {
+    apply from: rootProject.file('build-core.gradle');
 }
 
-
-dependencies {
-    def GUAVA_VERSION = '19.0'
-
-    compile "org.springframework.boot:spring-boot-starter-data-jpa"
-    compile "org.springframework.boot:spring-boot-starter-data-rest"
-    compile "org.springframework.boot:spring-boot-starter-web"
-    compile "com.google.guava:guava:$GUAVA_VERSION"
-    compile "org.liquibase:liquibase-core"
-
-    runtime "com.h2database:h2"
-
-    testCompile "org.springframework.boot:spring-boot-starter-test"
+task production << {
+    apply from: rootProject.file('build-prod.gradle');
 }
 
-
-eclipse {
-    classpath {
-        containers.remove "org.eclipse.jdt.launching.JRE_CONTAINER"
-        containers "org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"
-    }
+task development << {
+    apply from: rootProject.file('build-dev.gradle');
 }
 
-task wrapper(type: Wrapper) {
-    gradleVersion = '2.12'
+task alltests << {
+    apply from: rootProject.file('build-test.gradle');
 }
