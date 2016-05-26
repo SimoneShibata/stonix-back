@@ -1,5 +1,6 @@
 package com.escoladeti.oldowl.stonix.forum.controller;
 
+import com.escoladeti.oldowl.stonix.enums.Status;
 import com.escoladeti.oldowl.stonix.forum.model.Question;
 import com.escoladeti.oldowl.stonix.forum.repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
