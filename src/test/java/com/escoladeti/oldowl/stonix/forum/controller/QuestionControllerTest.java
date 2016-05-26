@@ -58,14 +58,28 @@ public class QuestionControllerTest extends SuperControllerTest {
 
     @Test
     @Rollback
-    public void postOneQuestionAndGet() throws Exception {
-        final Question questionExpected = new Question();
-        questionExpected.setTitle("Title 2");
-        questionExpected.setDescription("Description 2");
+    public void postOneQuestionAndGetOneQuestion() throws Exception {
+        final Question question = new Question();
+        question.setTitle("Title");
+        question.setDescription("Description");
+        final MvcResult result = post(QuestionController.MAPPING, question)
+                .andExpect(status().isCreated())
+                .andReturn();
 
-        final Question[] expected = new Question[]{
-                questionExpected
-        };
+        final Question persisted = (Question) parseJson(result, Question.class);
+
+        final MvcResult search = get(QuestionController.MAPPING + "/" + question.getId())
+                .andExpect(status().isOk())
+                .andReturn();
+
+        final Question find = (Question) parseJson(search,Question.class);
+
+        Assert.assertEquals("is not equals", persisted, find);
+    }
+
+    @Test
+    @Rollback
+    public void postOneQuestionAndGet() throws Exception {
 
         final Question question = new Question();
         question.setTitle("Title 2");
@@ -73,6 +87,10 @@ public class QuestionControllerTest extends SuperControllerTest {
         post(QuestionController.MAPPING, question)
                 .andExpect(status().isCreated())
                 .andReturn();
+
+        final Question[] expected = new Question[]{
+                question
+        };
 
         final MvcResult result = get(QuestionController.MAPPING)
                 .andExpect(status().isOk())
@@ -85,17 +103,13 @@ public class QuestionControllerTest extends SuperControllerTest {
     @Test
     @Rollback
     public void postOneQuestionAndDeleteAndGet() throws Exception {
-        final Question questionExpected = new Question();
-        questionExpected.setTitle("Title 3");
-        questionExpected.setDescription("Description 3");
-
-        Question[] expected = new Question[]{
-                questionExpected
-        };
-
         final Question question = new Question();
         question.setTitle("Title 3");
         question.setDescription("Description 3");
+
+        Question[] expected = new Question[]{
+                question
+        };
         post(QuestionController.MAPPING, question)
                 .andExpect(status().isCreated())
                 .andReturn();
@@ -123,13 +137,6 @@ public class QuestionControllerTest extends SuperControllerTest {
     @Test
     @Rollback
     public void postOneQuestionAndPutAndGet() throws Exception {
-        final Question questionExpected = new Question();
-        questionExpected.setTitle("Title 4");
-        questionExpected.setDescription("Description 4");
-
-        Question[] expected = new Question[]{
-                questionExpected
-        };
 
         final Question question = new Question();
         question.setTitle("Title 4");
@@ -138,6 +145,10 @@ public class QuestionControllerTest extends SuperControllerTest {
                 .andExpect(status().isCreated())
                 .andReturn();
 
+        Question[] expected = new Question[]{
+                question
+        };
+
         final MvcResult result = get(QuestionController.MAPPING)
                 .andExpect(status().isOk())
                 .andReturn();
@@ -145,19 +156,16 @@ public class QuestionControllerTest extends SuperControllerTest {
         Question[] persisted = (Question[]) parseJson(result, Question[].class);
         Assert.assertArrayEquals("get is not equals", expected, persisted);
 
-        final Question question1 = persisted[0];
-        question1.setTitle("Title 4 - putok");
-        question1.setDescription("Description 4 - putok");
 
-        put(QuestionController.MAPPING, question1)
+        question.setTitle("Title 4 - putok");
+        question.setDescription("Description 4 - putok");
+
+        put(QuestionController.MAPPING, question)
                 .andExpect(status().isAccepted());
 
-        final Question question1Expected = new Question();
-        question1Expected.setTitle("Title 4 - putok");
-        question1Expected.setDescription("Description 4 - putok");
 
         expected = new Question[]{
-                question1Expected
+                question
         };
 
         final MvcResult resultAfterPut = get(QuestionController.MAPPING)
@@ -173,5 +181,23 @@ public class QuestionControllerTest extends SuperControllerTest {
     public void testTryToDeleteInvalidId() throws Exception {
         delete(QuestionController.MAPPING, "123")
                 .andExpect(status().isNotFound());
+    }
+
+    @Test
+    @Rollback
+    public void testTryToPutInvalidArguments() throws Exception{
+        Question question = new Question();
+        question.setTitle("Title");
+        question.setDescription("Description");
+
+        post(QuestionController.MAPPING, question)
+                .andExpect(status().isCreated())
+                .andReturn();
+
+        question.setTitle("");
+        question.setDescription("");
+
+        put(QuestionController.MAPPING, question)
+                .andExpect(status().isNotAcceptable());
     }
 }

@@ -9,13 +9,22 @@ import javax.persistence.Entity;
  * Created by tdc on 01/05/16.
  */
 @Entity
-public class Question extends SuperEntity {
+public class Question extends BasicForum {
 
     private String title;
-    private String description;
+    private Integer views;
 
     public Question() {
         super();
+        this.views = 0;
+    }
+
+    public Integer getViews() {
+        return views;
+    }
+
+    public void setViews(){
+        this.views ++;
     }
 
     public String getTitle() {
@@ -26,13 +35,6 @@ public class Question extends SuperEntity {
         this.title = title;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(final String description) {
-        this.description = description;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -40,13 +42,12 @@ public class Question extends SuperEntity {
         if (o == null || getClass() != o.getClass()) return false;
 
         Question that = (Question) o;
-        return Objects.equal(this.title, that.title) &&
-                Objects.equal(this.description, that.description);
+        return Objects.equal(this.title, that.title);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(title, description);
+        return Objects.hashCode(title, views);
     }
 
     @Override
@@ -54,7 +55,7 @@ public class Question extends SuperEntity {
         return MoreObjects.toStringHelper(this)
                 .add("id", getId())
                 .add("title", title)
-                .add("description", description)
+                .add("views", views)
                 .toString();
     }
 }
