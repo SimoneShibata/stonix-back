@@ -1,5 +1,0 @@
-databaseChangeLog:
-  - includeAll:
-      path: db/changelog/entities/
-  #- includeAll:
-  #    path: db/changelog/inserts/

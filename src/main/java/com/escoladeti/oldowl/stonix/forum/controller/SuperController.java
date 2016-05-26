@@ -11,8 +11,8 @@ import java.util.List;
 /**
  * Created by Felipe on 09/04/2016.
  */
-@CrossOrigin(origins = "http://localhost:3000")
-@RequestMapping("/api")
+
+@RestController
 public abstract class SuperController<T extends SuperEntity, R extends SuperRepository<T>> {
 
     protected abstract R getRepository();
