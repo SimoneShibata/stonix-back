@@ -1,5 +1,6 @@
 package com.escoladeti.oldowl.stonix.forum.model;
 
+import com.escoladeti.oldowl.stonix.enums.Status;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 
@@ -23,8 +24,8 @@ public class Question extends BasicForum {
         return views;
     }
 
-    public void setViews(){
-        this.views ++;
+    public void setViews(final Integer views) {
+        this.views = views;
     }
 
     public String getTitle() {
@@ -34,7 +35,6 @@ public class Question extends BasicForum {
     public void setTitle(final String title) {
         this.title = title;
     }
-
 
     @Override
     public boolean equals(Object o) {
