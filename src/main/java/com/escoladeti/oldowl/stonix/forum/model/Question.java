@@ -23,8 +23,8 @@ public class Question extends BasicForum {
         return views;
     }
 
-    public void setViews(){
-        this.views ++;
+    public void setViews(Integer views) {
+        this.views = views;
     }
 
     public String getTitle() {

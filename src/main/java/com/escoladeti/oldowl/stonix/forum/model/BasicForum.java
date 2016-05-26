@@ -12,7 +12,7 @@ import java.util.Date;
  */
 @MappedSuperclass
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class BasicForum extends Forum{
+public abstract class BasicForum extends Forum {
 
     private Date lastUpdate;
 

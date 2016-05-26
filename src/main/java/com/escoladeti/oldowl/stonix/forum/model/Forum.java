@@ -11,7 +11,7 @@ import java.util.Date;
  */
 @MappedSuperclass
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Forum extends SuperEntity{
+public abstract class Forum extends SuperEntity {
 
     private String description;
     private final Date created;
