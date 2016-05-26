@@ -14,6 +14,7 @@ import java.util.Date;
  * Created by Felipe on 09/04/2016.
  */
 @RestController
+@CrossOrigin("http://localhost:3000")
 @RequestMapping(QuestionController.MAPPING)
 public class QuestionController extends SuperController<Question, QuestionRepository> {
     public static final String MAPPING = "/api/questions";
