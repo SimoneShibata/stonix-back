@@ -13,6 +13,7 @@ import java.util.List;
  */
 
 @RestController
+@CrossOrigin("*")
 public abstract class SuperController<T extends SuperEntity, R extends SuperRepository<T>> {
 
     protected abstract R getRepository();

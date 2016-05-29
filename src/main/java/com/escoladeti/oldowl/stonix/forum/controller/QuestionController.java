@@ -1,6 +1,5 @@
 package com.escoladeti.oldowl.stonix.forum.controller;
 
-import com.escoladeti.oldowl.stonix.enums.Status;
 import com.escoladeti.oldowl.stonix.forum.model.Question;
 import com.escoladeti.oldowl.stonix.forum.repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +13,6 @@ import java.util.Date;
  * Created by Felipe on 09/04/2016.
  */
 @RestController
-@CrossOrigin("http://localhost:3000")
 @RequestMapping(QuestionController.MAPPING)
 public class QuestionController extends SuperController<Question, QuestionRepository> {
     public static final String MAPPING = "/api/questions";
