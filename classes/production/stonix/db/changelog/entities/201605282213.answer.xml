@@ -3,8 +3,8 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
-    <changeSet author="felipe.paetzold" id="201605300844">
-        <createTable tableName="comment">
+    <changeSet author="felipe.paetzold" id="201605282213">
+        <createTable tableName="answer">
             <column name="id" type="varchar(255)">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
@@ -14,11 +14,14 @@
             <column name="description" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="created" type="datetime">
-                <constraints nullable="true"/>
+            <column name="last_update" type="datetime">
+                <constraints nullable="false"/>
             </column>
             <column name="status" type="varchar(255)">
-                <constraints nullable="true"/>
+                <constraints nullable="false"/>
+            </column>
+            <column name="created" type="datetime">
+                <constraints nullable="false"/>
             </column>
         </createTable>
     </changeSet>
