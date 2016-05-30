@@ -56,6 +56,11 @@ public class Question extends BasicForum {
                 .add("id", getId())
                 .add("title", title)
                 .add("views", views)
+                .add("created", getCreated())
+                .add("dead", getDead())
+                .add("status", getStatus())
+                .add("last_update", getLastUpdate())
+                .add("description", getDescription())
                 .toString();
     }
 }
