@@ -10,7 +10,7 @@ import javax.persistence.OneToMany;
 import java.util.List;
 
 /**
- * Created by Felipe on 01/05/16.
+ * Created by tdc on 01/05/16.
  */
 @Entity
 public class Answer extends BasicForum {
