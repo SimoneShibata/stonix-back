@@ -3,26 +3,28 @@ package com.escoladeti.oldowl.stonix.forum.model;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 /**
- * Created by tdc on 01/05/16.
+ * Created by Felipe on 30/05/16.
  */
 @Entity
-public class Answer extends BasicForum {
+public class Comment extends Forum {
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Answer that = (Answer) o;
-        return Objects.equal(this.getDescription(), that.getDescription());
+        Comment that = (Comment) o;
+        return Objects.equal(this.getId(), that.getId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(getDescription(), getId());
+        return Objects.hashCode(getDescription(), getCreated());
     }
 
     @Override
@@ -30,10 +32,8 @@ public class Answer extends BasicForum {
         return MoreObjects.toStringHelper(this)
                 .add("id", getId())
                 .add("created", getCreated())
-                .add("dead", getDead())
-                .add("status", getStatus())
-                .add("last_update", getLastUpdate())
                 .add("description", getDescription())
+                .add("status", getStatus())
                 .toString();
     }
 }
