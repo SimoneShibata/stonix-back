@@ -4,13 +4,9 @@ import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 
 import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.OneToMany;
-import java.util.List;
 
 /**
- * Created by Felipe on 01/05/16.
+ * Created by tdc on 01/05/16.
  */
 @Entity
 public class Answer extends BasicForum {
