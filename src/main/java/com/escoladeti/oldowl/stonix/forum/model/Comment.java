@@ -3,9 +3,7 @@ package com.escoladeti.oldowl.stonix.forum.model;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
 
 /**
  * Created by Felipe on 30/05/16.
