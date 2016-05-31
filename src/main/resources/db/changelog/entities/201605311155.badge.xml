@@ -17,7 +17,7 @@
             <column name="name" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="image" type="image">
+            <column name="image" type="string">
                 <constraints nullable="false"/>
             </column>
         </createTable>

@@ -14,7 +14,7 @@ public class Badge extends SuperEntity {
 
     private String name;
     private String description;
-    private File image;
+    private String image;
 
     public String getName() {
         return name;
@@ -32,11 +32,11 @@ public class Badge extends SuperEntity {
         this.description = description;
     }
 
-    public File getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(File image) {
+    public void setImage(String image) {
         this.image = image;
     }
 
