@@ -13,14 +13,6 @@ public class AnswerUnityTest {
 
     @Test
     @Rollback
-    public void testInsertValues() throws Exception{
-        Answer answer = new Answer();
-        answer.setDescription("Resposta da questão");
-
-    }
-
-    @Test
-    @Rollback
     public void testValuesEquals() throws Exception{
         Answer answer = new Answer();
         answer.setDescription("Resposta");
@@ -31,10 +23,9 @@ public class AnswerUnityTest {
     @Rollback
     public void testHashCode() throws Exception{
         Answer answer = new Answer();
-        Answer answer1 = new Answer();
+        Answer expected = new Answer();
         answer.setDescription("Resposta1");
-        answer1.setDescription("Resposta1");
-        Assert.assertTrue(answer.equals(answer1) && answer1.equals(answer));
-        Assert.assertTrue(answer.getDescription().hashCode() == answer1.getDescription().hashCode());
+        expected.setDescription("Resposta1");
+        Assert.assertEquals("Is not equals", answer, expected);
     }
 }
