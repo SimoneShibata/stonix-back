@@ -1,0 +1,21 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+    <changeSet author="felipe.paetzold" id="201605282213">
+        <addColumn tableName="answer">
+            <column name="question_id" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+        <addForeignKeyConstraint baseColumnNames="question_id"
+                                 baseTableName="answer"
+                                 constraintName="fk_answer_question"
+                                 deferrable="false"
+                                 initiallyDeferred="false"
+                                 deleteCascade="true"
+                                 referencedColumnNames="id"
+                                 referencedTableName="question"/>
+    </changeSet>
+</databaseChangeLog>

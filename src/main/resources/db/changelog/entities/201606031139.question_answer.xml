@@ -1,0 +1,32 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+    <changeSet author="felipe.paetzold" id="201606031139">
+        <createTable tableName="question_answer">
+            <column name="question_id" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="answer_id" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseColumnNames="question_id"
+                                 baseTableName="question_answer"
+                                 constraintName="fk_question_answer_question"
+                                 deferrable="false"
+                                 initiallyDeferred="false"
+                                 deleteCascade="true"
+                                 referencedColumnNames="id"
+                                 referencedTableName="question"/>
+        <addForeignKeyConstraint baseColumnNames="answer_id"
+                                 baseTableName="question_answer"
+                                 constraintName="fk_question_answer_answer"
+                                 deferrable="false"
+                                 initiallyDeferred="false"
+                                 deleteCascade="true"
+                                 referencedColumnNames="id"
+                                 referencedTableName="answer"/>
+    </changeSet>
+</databaseChangeLog>

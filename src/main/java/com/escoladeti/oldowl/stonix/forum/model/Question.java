@@ -3,7 +3,11 @@ package com.escoladeti.oldowl.stonix.forum.model;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by tdc on 01/05/16.
@@ -13,6 +17,22 @@ public class Question extends BasicForum {
 
     private String title;
     private Integer views;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Answer> answerList;
+
+    public void transformAnswerInList(Answer answer){
+        List<Answer> answers = new ArrayList<>();
+        answers.add(answer);
+        this.setAnswerList(answers);
+    }
+
+    public List<Answer> getAnswerList() {
+        return answerList;
+    }
+
+    public void setAnswerList(List<Answer> answerList) {
+        this.answerList = answerList;
+    }
 
     public Question() {
         super();
