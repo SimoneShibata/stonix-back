@@ -14,7 +14,7 @@ public class AnswerUnityTest {
     public void testValuesEquals() throws Exception{
         Answer answer = new Answer();
         answer.setDescription("Resposta");
-        Assert.assertEquals(answer.getDescription(), "Resposta");
+        Assert.assertEquals("Is not equals",answer.getDescription(), "Resposta");
     }
 
     @Test
