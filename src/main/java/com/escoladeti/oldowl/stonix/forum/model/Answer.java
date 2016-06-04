@@ -28,7 +28,6 @@ public class Answer extends BasicForum {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("id", getId())
                 .add("created", getCreated())
                 .add("dead", getDead())
                 .add("status", getStatus())
