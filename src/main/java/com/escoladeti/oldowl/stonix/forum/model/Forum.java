@@ -2,6 +2,7 @@ package com.escoladeti.oldowl.stonix.forum.model;
 
 import com.escoladeti.oldowl.stonix.enums.Status;
 import com.google.common.base.MoreObjects;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -14,6 +15,7 @@ import java.util.Date;
 public abstract class Forum extends SuperEntity {
 
     private String description;
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private final Date created;
 
     @Enumerated(EnumType.STRING)

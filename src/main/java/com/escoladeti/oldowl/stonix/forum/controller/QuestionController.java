@@ -44,9 +44,10 @@ public class QuestionController extends SuperController<Question, QuestionReposi
         return new ResponseEntity<>(repository.save(question), HttpStatus.OK);
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/{id}/answers")
+    @RequestMapping(method = RequestMethod.PUT, value = "/{id}/answers")
     public ResponseEntity<Question> postAnswer(@PathVariable("id") final String id, @RequestBody Answer answer){
         Question question = repository.findOne(id);
+        answer.setQuestion(question);
         question.transformAnswerInList(answer);
         return super.update(question);
     }

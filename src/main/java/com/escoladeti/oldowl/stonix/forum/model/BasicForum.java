@@ -1,6 +1,7 @@
 package com.escoladeti.oldowl.stonix.forum.model;
 
 import com.google.common.base.MoreObjects;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -14,6 +15,7 @@ import java.util.Date;
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class BasicForum extends Forum {
 
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date lastUpdate;
 
     public BasicForum() {

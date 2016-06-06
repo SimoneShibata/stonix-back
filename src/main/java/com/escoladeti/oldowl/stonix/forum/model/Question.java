@@ -3,10 +3,7 @@ package com.escoladeti.oldowl.stonix.forum.model;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import java.util.ArrayList;
+import javax.persistence.*;
 import java.util.List;
 
 /**
@@ -17,11 +14,13 @@ public class Question extends BasicForum {
 
     private String title;
     private Integer views;
-    @OneToMany(cascade = CascadeType.ALL)
+
+    @OneToMany(fetch= FetchType.LAZY, cascade= CascadeType.ALL, mappedBy="answer")
+    @JoinColumn(name="question_id")
     private List<Answer> answerList;
 
     public void transformAnswerInList(Answer answer){
-        List<Answer> answers = new ArrayList<>();
+        List<Answer> answers = getAnswerList();
         answers.add(answer);
         this.setAnswerList(answers);
     }
@@ -79,6 +78,7 @@ public class Question extends BasicForum {
                 .add("created", getCreated())
                 .add("dead", getDead())
                 .add("status", getStatus())
+                .add("answerList", getAnswerList())
                 .add("last_update", getLastUpdate())
                 .add("description", getDescription())
                 .toString();
