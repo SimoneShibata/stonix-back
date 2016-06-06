@@ -11,7 +11,7 @@
         </addColumn>
         <addForeignKeyConstraint baseColumnNames="question_id"
                                  baseTableName="answer"
-                                 constraintName="fk_address_person"
+                                 constraintName="fk_answer_question"
                                  deferrable="false"
                                  initiallyDeferred="false"
                                  deleteCascade="true"

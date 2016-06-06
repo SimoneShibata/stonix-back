@@ -10,13 +10,13 @@ import java.util.List;
  * Created by tdc on 01/05/16.
  */
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Question extends BasicForum {
 
     private String title;
     private Integer views;
 
-    @OneToMany(fetch= FetchType.LAZY, cascade= CascadeType.ALL, mappedBy="answer")
-    @JoinColumn(name="question_id")
+    @OneToMany(fetch= FetchType.LAZY, cascade= CascadeType.ALL)
     private List<Answer> answerList;
 
     public void transformAnswerInList(Answer answer){
