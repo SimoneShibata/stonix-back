@@ -56,6 +56,27 @@ public class QuestionControllerTest extends SuperControllerTest {
         Assert.assertEquals("persisted not equals", question, persisted);
     }
 
+//    @Test
+//    @Rollback
+//    public void postOneQuestionAndPostOneAnswer() throws Exception {
+//
+//        final Question question = new Question();
+//        question.setTitle("Title");
+//        question.setDescription("Description");
+//
+//        post(QuestionController.MAPPING, question)
+//                .andExpect(status().isCreated())
+//                .andReturn();
+//
+//        Answer answer = new Answer();
+//        answer.setDescription("Description");
+//
+//        question.transformAnswerInList(answer);
+//        put(QuestionController.MAPPING + "/" + question.getId() + "/answers", question)
+//                .andExpect(status().isAccepted());
+//    }
+
+
     @Test
     @Rollback
     public void postOneQuestionAndGetOneQuestion() throws Exception {
@@ -72,7 +93,7 @@ public class QuestionControllerTest extends SuperControllerTest {
                 .andExpect(status().isOk())
                 .andReturn();
 
-        final Question find = (Question) parseJson(search,Question.class);
+        final Question find = (Question) parseJson(search, Question.class);
 
         Assert.assertEquals("is not equals", persisted, find);
     }
@@ -185,7 +206,7 @@ public class QuestionControllerTest extends SuperControllerTest {
 
     @Test
     @Rollback
-    public void testTryToPutInvalidArguments() throws Exception{
+    public void testTryToPutInvalidArguments() throws Exception {
         Question question = new Question();
         question.setTitle("Title");
         question.setDescription("Description");

@@ -18,6 +18,7 @@ public abstract class BasicForum extends Forum {
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date lastUpdate;
 
+
     public BasicForum() {
         this.lastUpdate = new Date(System.currentTimeMillis());
     }
@@ -26,7 +27,7 @@ public abstract class BasicForum extends Forum {
         return lastUpdate;
     }
 
-    public void setLastUpdate(Date lastUpdate) {
+    public void setLastUpdate(final Date lastUpdate) {
         this.lastUpdate = lastUpdate;
     }
 
