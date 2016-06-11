@@ -28,7 +28,6 @@ public class Comment extends Forum {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("id", getId())
                 .add("created", getCreated())
                 .add("description", getDescription())
                 .add("status", getStatus())

@@ -44,9 +44,9 @@ public class BadgeUnitTest {
         badge.setName("Nome");
         expected.setName("Nome");
         badge.setImage("Imagem");
-        expected.setImage("imagem");
-        Assert.assertEquals("Is not equals", badge.toString(), badge.toString());
-        Assert.assertEquals("Is not equals", badge.toString(), badge.toString());
-        Assert.assertEquals("Is not equals", badge.toString(), badge.toString());
+        expected.setImage("Imagem");
+        Assert.assertEquals("Is not equals", badge.toString(), expected.toString());
+        Assert.assertEquals("Is not equals", badge.toString(), expected.toString());
+        Assert.assertEquals("Is not equals", badge.toString(), expected.toString());
     }
 }
