@@ -40,6 +40,5 @@ public class CommentUnitTest {
         comment.setStatus(Status.ACTIVE);
         expected.setStatus(Status.ACTIVE);
         Assert.assertEquals("Is not Equals", comment.toString(), expected.toString());
-        Assert.assertEquals("Is not Equals", comment.toString(), expected.toString());
     }
 }
