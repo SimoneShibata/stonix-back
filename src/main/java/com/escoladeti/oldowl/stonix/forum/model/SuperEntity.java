@@ -11,7 +11,7 @@ import java.util.UUID;
  */
 @MappedSuperclass
 @Inheritance(strategy = InheritanceType.JOINED)
-public class SuperEntity {
+public abstract class SuperEntity {
     @Id
     private final String id;
     private Boolean dead;

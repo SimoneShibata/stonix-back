@@ -38,9 +38,7 @@ targetCompatibility = 1.8
 
 dependencies {
     def GUAVA_VERSION = '19.0'
-
     compile "org.springframework.boot:spring-boot-starter-data-jpa"
-    compile "org.springframework.boot:spring-boot-starter-data-rest"
     compile "org.springframework.boot:spring-boot-starter-web"
     compile "com.google.guava:guava:$GUAVA_VERSION"
     compile "org.liquibase:liquibase-core"

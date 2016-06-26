@@ -6,10 +6,10 @@
     <changeSet author="felipe.paetzold" id="201605250938">
         <addColumn tableName="question">
             <column name="description" type="varchar(255)">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
             <column name="created" type="datetime">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
         </addColumn>
     </changeSet>
