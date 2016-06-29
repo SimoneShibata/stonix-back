@@ -1,9 +1,7 @@
 package com.escoladeti.oldowl.stonix.forum.controller;
 
 import com.escoladeti.oldowl.stonix.forum.model.Badge;
-import com.escoladeti.oldowl.stonix.forum.model.Comment;
 import com.escoladeti.oldowl.stonix.forum.repository.BadgeRepository;
-import com.escoladeti.oldowl.stonix.forum.repository.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

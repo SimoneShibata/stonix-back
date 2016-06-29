@@ -1,6 +1,7 @@
 package com.escoladeti.oldowl.stonix.forum.controller;
 
 import com.escoladeti.oldowl.stonix.forum.model.Answer;
+import com.escoladeti.oldowl.stonix.forum.model.CommentQuestion;
 import com.escoladeti.oldowl.stonix.forum.model.Question;
 import com.escoladeti.oldowl.stonix.forum.repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +50,14 @@ public class QuestionController extends SuperController<Question, QuestionReposi
         Question question = repository.findOne(id);
         question.transformAnswerInList(answer);
         answer.setQuestion(question);
+        return super.update(question);
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, value = "/{id}/comments")
+    public ResponseEntity<Question> postCommentQuestion(@PathVariable("id") final String id, @RequestBody CommentQuestion commentQuestion){
+        Question question = repository.findOne(id);
+        question.transformCommentQuestionInList(commentQuestion);
+        commentQuestion.setQuestion(question);
         return super.update(question);
     }
 }

@@ -1,7 +1,6 @@
 package com.escoladeti.oldowl.stonix.forum.repository;
 
 import com.escoladeti.oldowl.stonix.forum.model.Answer;
-import com.escoladeti.oldowl.stonix.forum.model.Question;
 import org.springframework.stereotype.Repository;
 
 /**

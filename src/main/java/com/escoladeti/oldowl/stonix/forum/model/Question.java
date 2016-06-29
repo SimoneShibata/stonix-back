@@ -7,7 +7,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
-import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -22,10 +21,27 @@ public class Question extends BasicForum{
     @OneToMany(fetch= FetchType.LAZY, cascade= CascadeType.ALL, mappedBy = "question")
     private List<Answer> answerList;
 
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "question")
+    private List<CommentQuestion> commentList;
+
     public void transformAnswerInList(Answer answer){
         List<Answer> answers = getAnswerList();
         answers.add(answer);
         this.setAnswerList(answers);
+    }
+
+    public void transformCommentQuestionInList(CommentQuestion commentQuestion){
+        List<CommentQuestion> commentQuestions = getCommentList();
+        commentQuestions.add(commentQuestion);
+        this.setCommentList(commentQuestions);
+    }
+
+    public List<CommentQuestion> getCommentList() {
+        return commentList;
+    }
+
+    public void setCommentList(List<CommentQuestion> commentList) {
+        this.commentList = commentList;
     }
 
     public List<Answer> getAnswerList() {
