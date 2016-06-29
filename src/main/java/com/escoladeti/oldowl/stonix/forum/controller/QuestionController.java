@@ -53,7 +53,7 @@ public class QuestionController extends SuperController<Question, QuestionReposi
         return super.update(question);
     }
 
-    @RequestMapping(method = RequestMethod.PUT, value = "/{id}/comment")
+    @RequestMapping(method = RequestMethod.PUT, value = "/{id}/comments")
     public ResponseEntity<Question> postCommentQuestion(@PathVariable("id") final String id, @RequestBody CommentQuestion commentQuestion){
         Question question = repository.findOne(id);
         question.transformCommentQuestionInList(commentQuestion);

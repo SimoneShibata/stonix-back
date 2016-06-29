@@ -1,5 +1,7 @@
 package com.escoladeti.oldowl.stonix.forum.controller;
 
+import com.escoladeti.oldowl.stonix.forum.model.Answer;
+import com.escoladeti.oldowl.stonix.forum.model.CommentQuestion;
 import com.escoladeti.oldowl.stonix.forum.model.Question;
 import org.junit.Assert;
 import org.junit.Test;
@@ -70,12 +72,35 @@ public class QuestionControllerTest extends SuperControllerTest {
 //
 //        Answer answer = new Answer();
 //        answer.setDescription("Description");
+//        answer.setQuestion(question);
 //
-//        question.transformAnswerInList(answer);
-//        put(QuestionController.MAPPING + "/" + question.getId() + "/answers", question)
+//        List<Answer> answerList = new ArrayList();
+//
+//        answerList.add(answer);
+//        question.setAnswerList(answerList);
+//
+//        put(QuestionController.MAPPING + "/" + question.getId() + "/answers", answer)
 //                .andExpect(status().isAccepted());
 //    }
 
+//    @Test
+//    @Rollback
+//    public void postOneQuestionAndPostOneComment() throws Exception {
+//
+//        final Question question = new Question();
+//        question.setTitle("Title");
+//        question.setDescription("Description");
+//
+//        post(QuestionController.MAPPING, question)
+//                .andExpect(status().isCreated())
+//                .andReturn();
+//
+//        CommentQuestion commentQuestion = new CommentQuestion();
+//        commentQuestion.setDescription("Description");
+//
+//        put(QuestionController.MAPPING + "/" + question.getId() + "/comment", commentQuestion)
+//                .andExpect(status().isAccepted());
+//    }
 
     @Test
     @Rollback
