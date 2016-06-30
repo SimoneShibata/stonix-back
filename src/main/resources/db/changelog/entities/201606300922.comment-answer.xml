@@ -1,0 +1,36 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+    <changeSet author="felipe.paetzold" id="201606300922">
+        <createTable tableName="comment_answer">
+            <column name="id" type="varchar(255)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="dead" type="boolean">
+                <constraints nullable="true"/>
+            </column>
+            <column name="description" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="created" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+            <column name="status" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="answer_id" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseColumnNames="answer_id"
+                                 baseTableName="comment_answer"
+                                 constraintName="fk_comment_answer_answer"
+                                 deferrable="false"
+                                 initiallyDeferred="false"
+                                 deleteCascade="true"
+                                 referencedColumnNames="id"
+                                 referencedTableName="answer"/>
+    </changeSet>
+</databaseChangeLog>
