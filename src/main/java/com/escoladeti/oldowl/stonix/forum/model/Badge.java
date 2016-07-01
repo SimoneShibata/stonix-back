@@ -57,7 +57,6 @@ public class Badge extends SuperEntity {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("id", getId())
                 .add("image", image)
                 .add("name", name)
                 .add("description", description)
