@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import java.io.Serializable;
+import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by tdc on 01/05/16.
@@ -17,6 +16,23 @@ public class Answer extends BasicForum {
     @ManyToOne
     @JsonIgnore
     private Question question;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "answer")
+    private List<CommentAnswer> commentList;
+
+    public void transformCommentAnswerInList(CommentAnswer commentAnswer){
+        List<CommentAnswer> commentAnswers = getCommentList();
+        commentAnswers.add(commentAnswer);
+        this.setCommentList(commentAnswers);
+    }
+
+    public List<CommentAnswer> getCommentList() {
+        return this.commentList;
+    }
+
+    public void setCommentList(List<CommentAnswer> commentList) {
+        this.commentList = commentList;
+    }
 
     public Question getQuestion() {
         return question;

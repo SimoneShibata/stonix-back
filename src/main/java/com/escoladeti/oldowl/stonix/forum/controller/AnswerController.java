@@ -1,14 +1,12 @@
 package com.escoladeti.oldowl.stonix.forum.controller;
 
 import com.escoladeti.oldowl.stonix.forum.model.Answer;
+import com.escoladeti.oldowl.stonix.forum.model.CommentAnswer;
 import com.escoladeti.oldowl.stonix.forum.repository.AnswerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 
@@ -35,6 +33,14 @@ public class AnswerController extends SuperController<Answer, AnswerRepository> 
             return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
         }
         answer.setLastUpdate(new Date(System.currentTimeMillis()));
+        return super.update(answer);
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, value = "/{id}/comments")
+    public ResponseEntity<Answer> postCommentAnswer(@PathVariable("id") final String id, @RequestBody CommentAnswer commentAnswer){
+        Answer answer = repository.findOne(id);
+        answer.transformCommentAnswerInList(commentAnswer);
+        commentAnswer.setAnswer(answer);
         return super.update(answer);
     }
 }
