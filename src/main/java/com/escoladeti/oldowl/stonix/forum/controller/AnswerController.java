@@ -29,11 +29,15 @@ public class AnswerController extends SuperController<Answer, AnswerRepository> 
     @Override
     @RequestMapping(method = RequestMethod.PUT)
     public ResponseEntity<Answer> update(@RequestBody final Answer answer) {
-        if (answer.getId() == null || answer.getDescription().equals("")) {
-            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+        try {
+            if (answer.getId() == null || answer.getDescription().equals("")) {
+                return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+            }
+            answer.setLastUpdate(new Date(System.currentTimeMillis()));
+            return super.update(answer);
+        }catch(NullPointerException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        answer.setLastUpdate(new Date(System.currentTimeMillis()));
-        return super.update(answer);
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/{id}/comments")

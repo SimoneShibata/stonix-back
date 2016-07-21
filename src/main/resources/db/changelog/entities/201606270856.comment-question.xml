@@ -9,13 +9,13 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="dead" type="boolean">
-                <constraints nullable="true"/>
+                <constraints nullable="false"/>
             </column>
             <column name="description" type="varchar(255)">
-                <constraints nullable="true"/>
+                <constraints nullable="false"/>
             </column>
             <column name="created" type="datetime">
-                <constraints nullable="true"/>
+                <constraints nullable="false"/>
             </column>
             <column name="status" type="varchar(255)">
                 <constraints nullable="false"/>

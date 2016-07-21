@@ -6,7 +6,7 @@
     <changeSet author="felipe.paetzold" id="201605251029">
         <addColumn tableName="question">
             <column name="status" type="varchar(255)">
-                <constraints nullable="true"/>
+                <constraints nullable="false"/>
             </column>
         </addColumn>
     </changeSet>
