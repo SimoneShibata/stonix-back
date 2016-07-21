@@ -29,10 +29,14 @@ public class BadgeController extends SuperController<Badge, BadgeRepository> {
     @Override
     @RequestMapping(method = RequestMethod.PUT)
     public ResponseEntity<Badge> update(@RequestBody final Badge badge) {
-        if (badge.getId() == null || badge.getDescription().equals("") || badge.getName().equals("") || badge.getImage().equals("")) {
-            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+        try {
+            if (badge.getId() == null || badge.getDescription().equals("") || badge.getName().equals("") || badge.getImage().equals("")) {
+                return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+            }
+            return super.update(badge);
+        }catch (NullPointerException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return super.update(badge);
     }
 
 }

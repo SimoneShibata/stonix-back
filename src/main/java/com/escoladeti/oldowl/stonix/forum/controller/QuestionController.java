@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+import java.lang.NullPointerException;
 import java.util.Date;
 
 /**
@@ -40,9 +40,13 @@ public class QuestionController extends SuperController<Question, QuestionReposi
     @Override
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
     public ResponseEntity<Question> getOne(@PathVariable final String id) {
+        try{
         Question question = repository.findOne(id);
         question.setViews(question.getViews() + 1);
         return new ResponseEntity<>(repository.save(question), HttpStatus.OK);
+        }catch (NullPointerException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/{id}/answers")
