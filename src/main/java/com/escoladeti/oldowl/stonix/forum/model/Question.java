@@ -17,10 +17,20 @@ public class Question extends BasicForum{
 
     private String title;
     private Integer views;
+    private Integer nice;
 
     public Question() {
         super();
         this.views = 0;
+        this.nice = 0;
+    }
+
+    public Integer getNice() {
+        return nice;
+    }
+
+    public void setNice(Integer nice) {
+        this.nice = nice;
     }
 
     public Integer getViews() {
