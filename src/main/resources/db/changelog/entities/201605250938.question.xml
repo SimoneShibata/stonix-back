@@ -5,7 +5,7 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
     <changeSet author="felipe.paetzold" id="201605250938">
         <addColumn tableName="question">
-            <column name="description" type="varchar(255)">
+            <column name="description" type="text">
                 <constraints nullable="false"/>
             </column>
             <column name="created" type="datetime">
