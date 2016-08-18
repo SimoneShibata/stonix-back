@@ -52,16 +52,8 @@ public class QuestionController extends SuperController<Question, QuestionReposi
     @RequestMapping(method = RequestMethod.PUT, value = "/{id}/answers")
     public ResponseEntity<Question> postAnswer(@PathVariable("id") final String id, @RequestBody Answer answer){
         Question question = repository.findOne(id);
-        question.transformAnswerInList(answer);
         answer.setQuestion(question);
         return super.update(question);
     }
 
-    @RequestMapping(method = RequestMethod.PUT, value = "/{id}/comments")
-    public ResponseEntity<Question> postCommentQuestion(@PathVariable("id") final String id, @RequestBody CommentQuestion commentQuestion){
-        Question question = repository.findOne(id);
-        question.transformCommentQuestionInList(commentQuestion);
-        commentQuestion.setQuestion(question);
-        return super.update(question);
-    }
 }

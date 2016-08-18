@@ -18,40 +18,6 @@ public class Question extends BasicForum{
     private String title;
     private Integer views;
 
-    @OneToMany(fetch= FetchType.LAZY, cascade= CascadeType.ALL, mappedBy = "question")
-    private List<Answer> answerList;
-
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "question")
-    private List<CommentQuestion> commentList;
-
-    public void transformAnswerInList(Answer answer){
-        List<Answer> answers = getAnswerList();
-        answers.add(answer);
-        this.setAnswerList(answers);
-    }
-
-    public void transformCommentQuestionInList(CommentQuestion commentQuestion){
-        List<CommentQuestion> commentQuestions = getCommentList();
-        commentQuestions.add(commentQuestion);
-        this.setCommentList(commentQuestions);
-    }
-
-    public List<CommentQuestion> getCommentList() {
-        return commentList;
-    }
-
-    public void setCommentList(List<CommentQuestion> commentList) {
-        this.commentList = commentList;
-    }
-
-    public List<Answer> getAnswerList() {
-        return answerList;
-    }
-
-    public void setAnswerList(List<Answer> answerList) {
-        this.answerList = answerList;
-    }
-
     public Question() {
         super();
         this.views = 0;
