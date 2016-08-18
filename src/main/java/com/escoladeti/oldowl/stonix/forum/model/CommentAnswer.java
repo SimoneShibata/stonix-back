@@ -15,7 +15,6 @@ import javax.persistence.ManyToOne;
 public class CommentAnswer extends Comment {
 
     @ManyToOne
-    @JsonIgnore
     private Answer answer;
 
     public void setAnswer(Answer answer) {

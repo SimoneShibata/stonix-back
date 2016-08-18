@@ -1,8 +1,8 @@
 package com.escoladeti.oldowl.stonix.forum.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
+import liquibase.database.Database;
 
 import javax.persistence.*;
 import java.util.List;
@@ -12,27 +12,8 @@ import java.util.List;
  */
 @Entity
 public class Answer extends BasicForum {
-
     @ManyToOne
-    @JsonIgnore
     private Question question;
-
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "answer")
-    private List<CommentAnswer> commentList;
-
-    public void transformCommentAnswerInList(CommentAnswer commentAnswer){
-        List<CommentAnswer> commentAnswers = getCommentList();
-        commentAnswers.add(commentAnswer);
-        this.setCommentList(commentAnswers);
-    }
-
-    public List<CommentAnswer> getCommentList() {
-        return this.commentList;
-    }
-
-    public void setCommentList(List<CommentAnswer> commentList) {
-        this.commentList = commentList;
-    }
 
     public Question getQuestion() {
         return question;
