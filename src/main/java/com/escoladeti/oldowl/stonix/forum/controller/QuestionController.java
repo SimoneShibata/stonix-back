@@ -49,6 +49,17 @@ public class QuestionController extends SuperController<Question, QuestionReposi
         }
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/nice/{id}")
+    public ResponseEntity<Question> nice(@PathVariable final String id) {
+        try{
+            Question question = repository.findOne(id);
+            question.setNice(question.getNice() + 1);
+            return new ResponseEntity<>(repository.save(question), HttpStatus.OK);
+        }catch (NullPointerException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     @RequestMapping(method = RequestMethod.PUT, value = "/{id}/answers")
     public ResponseEntity<Question> postAnswer(@PathVariable("id") final String id, @RequestBody Answer answer){
         Question question = repository.findOne(id);
