@@ -7,9 +7,12 @@ import com.escoladeti.oldowl.stonix.forum.repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 import java.lang.NullPointerException;
+import java.util.AbstractQueue;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Felipe on 09/04/2016.
@@ -25,6 +28,11 @@ public class QuestionController extends SuperController<Question, QuestionReposi
     @Override
     public QuestionRepository getRepository() {
         return repository;
+    }
+
+    @Override
+    public ResponseEntity<List<Question>> getAll() {
+        return new ResponseEntity<>(repository.findAllByOrderByLastUpdateDesc(), HttpStatus.OK);
     }
 
     @Override
