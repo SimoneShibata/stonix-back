@@ -32,7 +32,7 @@ public class QuestionController extends SuperController<Question, QuestionReposi
 
     @Override
     public ResponseEntity<List<Question>> getAll() {
-        return new ResponseEntity<>(repository.findAllByOrderByLastUpdateDesc(), HttpStatus.OK);
+        return new ResponseEntity<>(repository.findAllByDeadIsFalseOrderByLastUpdateDesc(), HttpStatus.OK);
     }
 
     @Override

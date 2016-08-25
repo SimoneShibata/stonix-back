@@ -8,5 +8,5 @@ import java.util.List;
  * Created by tdc on 09/04/16.
  */
 public interface QuestionRepository extends SuperRepository<Question> {
-    List<Question> findAllByOrderByLastUpdateDesc();
+    List<Question> findAllByDeadIsFalseOrderByLastUpdateDesc();
 }
