@@ -15,6 +15,25 @@ public class Answer extends BasicForum {
     @ManyToOne
     private Question question;
 
+    private Boolean bestAnswer;
+
+    public Answer() {
+        this.bestAnswer = false;
+    }
+
+    public Boolean getBestAnswer() {
+        return bestAnswer;
+    }
+
+    public void setBestAnswer(Boolean bestAnswer) {
+        this.bestAnswer = bestAnswer;
+    }
+
+
+    public void acceptAnswer(){
+        this.bestAnswer = true;
+    }
+
     public Question getQuestion() {
         return question;
     }

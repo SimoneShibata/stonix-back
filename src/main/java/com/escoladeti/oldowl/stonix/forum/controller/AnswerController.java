@@ -2,7 +2,10 @@ package com.escoladeti.oldowl.stonix.forum.controller;
 
 import com.escoladeti.oldowl.stonix.forum.model.Answer;
 import com.escoladeti.oldowl.stonix.forum.model.CommentAnswer;
+import com.escoladeti.oldowl.stonix.forum.model.Question;
 import com.escoladeti.oldowl.stonix.forum.repository.AnswerRepository;
+import com.escoladeti.oldowl.stonix.forum.repository.QuestionRepository;
+import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +21,9 @@ import java.util.List;
 @RequestMapping(AnswerController.MAPPING)
 public class AnswerController extends SuperController<Answer, AnswerRepository> {
     public static final String MAPPING = "/api/answers";
+
+    @Autowired
+    private QuestionRepository questionRepository;
 
     @Autowired
     private AnswerRepository repository;
@@ -46,5 +52,22 @@ public class AnswerController extends SuperController<Answer, AnswerRepository> 
         return repository.findByQuestionIdAndDeadIsFalse(id);
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "{questionId}/better/{answerId}")
+    public ResponseEntity<Answer> betterAnswer(@PathVariable("questionId") final String questionId, @PathVariable("answerId") final String answerId) {
+        try {
+            Question question = questionRepository.findOne(questionId);
+            if (!question.getAnswered()) {
+                Answer answer = repository.findOne(answerId);
+                answer.acceptAnswer();
+                question.acceptAnswer();
+                questionRepository.save(question);
+                return super.update(answer);
+            }else{
+                return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+            }
+        } catch (NullPointerException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 
 }
