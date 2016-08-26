@@ -17,22 +17,12 @@ public class Question extends BasicForum{
 
     private String title;
     private Integer views;
-    private Integer nice;
     private Boolean answered;
 
     public Question() {
         super();
         this.views = 0;
-        this.nice = 0;
         this.answered = false;
-    }
-
-    public Integer getNice() {
-        return nice;
-    }
-
-    public void setNice(Integer nice) {
-        this.nice = nice;
     }
 
     public Boolean getAnswered() {
