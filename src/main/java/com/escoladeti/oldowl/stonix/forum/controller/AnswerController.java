@@ -1,11 +1,9 @@
 package com.escoladeti.oldowl.stonix.forum.controller;
 
 import com.escoladeti.oldowl.stonix.forum.model.Answer;
-import com.escoladeti.oldowl.stonix.forum.model.CommentAnswer;
 import com.escoladeti.oldowl.stonix.forum.model.Question;
 import com.escoladeti.oldowl.stonix.forum.repository.AnswerRepository;
 import com.escoladeti.oldowl.stonix.forum.repository.QuestionRepository;
-import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -78,6 +76,17 @@ public class AnswerController extends SuperController<Answer, AnswerRepository> 
             return new ResponseEntity<>(repository.save(answer), HttpStatus.OK);
         }catch (NullPointerException e){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @Override
+    @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
+    public ResponseEntity<Answer> kill(@PathVariable("id") final String id){
+        Answer answer = repository.findOne(id);
+        if(answer.getBestAnswer().equals(true)){
+            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+        }else{
+            return super.kill(id);
         }
     }
 
