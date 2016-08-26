@@ -83,10 +83,14 @@ public class AnswerController extends SuperController<Answer, AnswerRepository> 
     @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
     public ResponseEntity<Answer> kill(@PathVariable("id") final String id){
         Answer answer = repository.findOne(id);
-        if(answer.getBestAnswer().equals(true)){
-            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
-        }else{
-            return super.kill(id);
+        try {
+            if (answer.getBestAnswer().equals(true)) {
+                return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+            } else {
+                return super.kill(id);
+            }
+        }catch (NullPointerException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
