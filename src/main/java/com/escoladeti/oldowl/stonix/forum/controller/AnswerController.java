@@ -49,7 +49,7 @@ public class AnswerController extends SuperController<Answer, AnswerRepository> 
 
     @RequestMapping(method = RequestMethod.GET, value = "/question/{id}")
     public List<Answer> getAnswersByQuestion(@PathVariable("id") final String id) {
-        return repository.findByQuestionIdAndDeadIsFalse(id);
+        return repository.findByQuestionIdAndDeadIsFalseOrderByNiceDesc(id);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "{questionId}/better/{answerId}")
