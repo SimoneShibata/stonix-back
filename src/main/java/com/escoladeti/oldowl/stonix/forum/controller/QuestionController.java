@@ -5,6 +5,7 @@ import com.escoladeti.oldowl.stonix.forum.model.CommentQuestion;
 import com.escoladeti.oldowl.stonix.forum.model.Question;
 import com.escoladeti.oldowl.stonix.forum.repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.StringArrayPropertyEditor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
@@ -73,6 +74,21 @@ public class QuestionController extends SuperController<Question, QuestionReposi
         Question question = repository.findOne(id);
         answer.setQuestion(question);
         return super.update(question);
+    }
+
+    @Override
+    @RequestMapping(method = RequestMethod.DELETE, value ="/{id}")
+    public ResponseEntity<Question> kill(@PathVariable("id") final String id){
+        Question question = repository.findOne(id);
+        try{
+            if (question.getAnswered().equals(true)){
+                return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+            }else {
+                return super.kill(id);
+            }
+        }catch (NullPointerException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
 }
