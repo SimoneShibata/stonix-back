@@ -91,4 +91,10 @@ public class QuestionController extends SuperController<Question, QuestionReposi
         }
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/user/{id}")
+    public ResponseEntity<List<Question>> listQuestionsByUser(@PathVariable("id") final String userId){
+        List<Question> questions = repository.findByDeadIsFalseAndUserIdOrderByLastUpdateDesc(userId);
+        return new ResponseEntity<>(questions, HttpStatus.OK);
+    }
+
 }

@@ -94,4 +94,10 @@ public class AnswerController extends SuperController<Answer, AnswerRepository> 
         }
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/user/{id}")
+    public ResponseEntity<List<Answer>> listQuestionsByUser(@PathVariable("id") final String userId){
+        List<Answer> answers = repository.findByDeadIsFalseAndUserIdOrderByLastUpdateDesc(userId);
+        return new ResponseEntity<>(answers, HttpStatus.OK);
+    }
+
 }

@@ -2,6 +2,7 @@ package com.escoladeti.oldowl.stonix.forum.controller;
 
 import com.escoladeti.oldowl.stonix.forum.model.Answer;
 import com.escoladeti.oldowl.stonix.forum.model.Question;
+import com.escoladeti.oldowl.stonix.forum.model.User;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,6 +14,7 @@ import org.springframework.test.web.servlet.MvcResult;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -41,14 +43,26 @@ public class AnswerControllerTest extends SuperControllerTest {
     @Test
     @Rollback
     public void postOneAnswer() throws Exception {
+        final User user = new User();
+        Date date = new Date(06,12,1995);
+        user.setName("Name");
+        user.setBirth(date);
+        user.setPassword("12345678");
+        user.setEmail("xdb@xdb.com");
+
+        post(UserController.MAPPING, user)
+                .andExpect(status().isCreated())
+                .andReturn();
+
         final Question questionExpected = new Question();
         questionExpected.setTitle("Title 1");
         questionExpected.setDescription("Description 1");
+        questionExpected.setUser(user);
 
         final Question question = new Question();
         question.setTitle("Title 1");
         question.setDescription("Description 1");
-
+        question.setUser(user);
         final MvcResult questionResult = post(QuestionController.MAPPING, question)
                 .andExpect(status().isCreated())
                 .andReturn();
@@ -58,12 +72,12 @@ public class AnswerControllerTest extends SuperControllerTest {
 
         final Answer expected = new Answer();
         expected.setDescription("Description 1");
-
+        expected.setUser(user);
         final Answer answer = new Answer();
         answer.setDescription("Description 1");
 
         answer.setQuestion(question);
-
+        answer.setUser(user);
         final MvcResult result = post(AnswerController.MAPPING, answer)
                 .andExpect(status().isCreated())
                 .andReturn();
@@ -75,14 +89,26 @@ public class AnswerControllerTest extends SuperControllerTest {
     @Test
     @Rollback
     public void postOneAnswerAndGetOneAnswer() throws Exception {
+        final User user = new User();
+        Date date = new Date(06,12,1995);
+        user.setName("Name");
+        user.setBirth(date);
+        user.setPassword("12345678");
+        user.setEmail("xdb@xdb.com");
+
+        post(UserController.MAPPING, user)
+                .andExpect(status().isCreated())
+                .andReturn();
+
         final Question questionExpected = new Question();
         questionExpected.setTitle("Title 1");
         questionExpected.setDescription("Description 1");
+        questionExpected.setUser(user);
 
         final Question question = new Question();
         question.setTitle("Title 1");
         question.setDescription("Description 1");
-
+        question.setUser(user);
         final MvcResult questionResult = post(QuestionController.MAPPING, question)
                 .andExpect(status().isCreated())
                 .andReturn();
@@ -93,6 +119,7 @@ public class AnswerControllerTest extends SuperControllerTest {
         final Answer answer = new Answer();
         answer.setDescription("Description");
         answer.setQuestion(question);
+        answer.setUser(user);
         final MvcResult result = post(AnswerController.MAPPING, answer)
                 .andExpect(status().isCreated())
                 .andReturn();
@@ -111,14 +138,25 @@ public class AnswerControllerTest extends SuperControllerTest {
     @Test
     @Rollback
     public void postOneAnswerAndGet() throws Exception {
+        final User user = new User();
+        Date date = new Date(06,12,1995);
+        user.setName("Name");
+        user.setBirth(date);
+        user.setPassword("12345678");
+        user.setEmail("xdb@xdb.com");
+
+        post(UserController.MAPPING, user)
+                .andExpect(status().isCreated())
+                .andReturn();
+
         final Question questionExpected = new Question();
         questionExpected.setTitle("Title 1");
         questionExpected.setDescription("Description 1");
-
+        questionExpected.setUser(user);
         final Question question = new Question();
         question.setTitle("Title 1");
         question.setDescription("Description 1");
-
+        question.setUser(user);
         final MvcResult questionResult = post(QuestionController.MAPPING, question)
                 .andExpect(status().isCreated())
                 .andReturn();
@@ -129,6 +167,7 @@ public class AnswerControllerTest extends SuperControllerTest {
         final Answer answer = new Answer();
         answer.setDescription("Description 2");
         answer.setQuestion(question);
+        answer.setUser(user);
         post(AnswerController.MAPPING, answer)
                 .andExpect(status().isCreated())
                 .andReturn();
@@ -148,14 +187,25 @@ public class AnswerControllerTest extends SuperControllerTest {
     @Test
     @Rollback
     public void postOneAnswerAndDeleteAndGet() throws Exception {
+        final User user = new User();
+        Date date = new Date(06,12,1995);
+        user.setName("Name");
+        user.setBirth(date);
+        user.setPassword("12345678");
+        user.setEmail("xdb@xdb.com");
+
+        post(UserController.MAPPING, user)
+                .andExpect(status().isCreated())
+                .andReturn();
+
         final Question questionExpected = new Question();
         questionExpected.setTitle("Title 1");
         questionExpected.setDescription("Description 1");
-
+        questionExpected.setUser(user);
         final Question question = new Question();
         question.setTitle("Title 1");
         question.setDescription("Description 1");
-
+        question.setUser(user);
         final MvcResult questionResult = post(QuestionController.MAPPING, question)
                 .andExpect(status().isCreated())
                 .andReturn();
@@ -166,6 +216,7 @@ public class AnswerControllerTest extends SuperControllerTest {
         final Answer answer = new Answer();
         answer.setDescription("Description 3");
         answer.setQuestion(question);
+        answer.setUser(user);
 
         Answer[] expected = new Answer[]{
                 answer
@@ -197,14 +248,25 @@ public class AnswerControllerTest extends SuperControllerTest {
     @Test
     @Rollback
     public void postOneAnswerAndPutAndGet() throws Exception {
+        final User user = new User();
+        Date date = new Date(06,12,1995);
+        user.setName("Name");
+        user.setBirth(date);
+        user.setPassword("12345678");
+        user.setEmail("xdb@xdb.com");
+
+        post(UserController.MAPPING, user)
+                .andExpect(status().isCreated())
+                .andReturn();
+
         final Question questionExpected = new Question();
         questionExpected.setTitle("Title 1");
         questionExpected.setDescription("Description 1");
-
+        questionExpected.setUser(user);
         final Question question = new Question();
         question.setTitle("Title 1");
         question.setDescription("Description 1");
-
+        question.setUser(user);
         final MvcResult questionResult = post(QuestionController.MAPPING, question)
                 .andExpect(status().isCreated())
                 .andReturn();
@@ -215,6 +277,7 @@ public class AnswerControllerTest extends SuperControllerTest {
         final Answer answer = new Answer();
         answer.setDescription("Description 4");
         answer.setQuestion(question);
+        answer.setUser(user);
         post(AnswerController.MAPPING, answer)
                 .andExpect(status().isCreated())
                 .andReturn();

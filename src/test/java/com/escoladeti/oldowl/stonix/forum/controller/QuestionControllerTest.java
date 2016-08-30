@@ -3,6 +3,7 @@ package com.escoladeti.oldowl.stonix.forum.controller;
 import com.escoladeti.oldowl.stonix.forum.model.Answer;
 import com.escoladeti.oldowl.stonix.forum.model.CommentQuestion;
 import com.escoladeti.oldowl.stonix.forum.model.Question;
+import com.escoladeti.oldowl.stonix.forum.model.User;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,6 +15,7 @@ import org.springframework.test.web.servlet.MvcResult;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -42,14 +44,25 @@ public class QuestionControllerTest extends SuperControllerTest {
     @Test
     @Rollback
     public void postOneQuestion() throws Exception {
+        final User user = new User();
+        Date date = new Date(06,12,1995);
+        user.setName("Name");
+        user.setBirth(date);
+        user.setPassword("12345678");
+        user.setEmail("xdb@xdb.com");
+
+        post(UserController.MAPPING, user)
+                .andExpect(status().isCreated())
+                .andReturn();
+
         final Question expected = new Question();
         expected.setTitle("Title 1");
         expected.setDescription("Description 1");
-
+        expected.setUser(user);
         final Question question = new Question();
         question.setTitle("Title 1");
         question.setDescription("Description 1");
-
+        question.setUser(user);
         final MvcResult result = post(QuestionController.MAPPING, question)
                 .andExpect(status().isCreated())
                 .andReturn();
@@ -58,56 +71,24 @@ public class QuestionControllerTest extends SuperControllerTest {
         Assert.assertEquals("persisted not equals", question, persisted);
     }
 
-//    @Test
-//    @Rollback
-//    public void postOneQuestionAndPostOneAnswer() throws Exception {
-//
-//        final Question question = new Question();
-//        question.setTitle("Title");
-//        question.setDescription("Description");
-//
-//        post(QuestionController.MAPPING, question)
-//                .andExpect(status().isCreated())
-//                .andReturn();
-//
-//        Answer answer = new Answer();
-//        answer.setDescription("Description");
-//        answer.setQuestion(question);
-//
-//        List<Answer> answerList = new ArrayList();
-//
-//        answerList.add(answer);
-//        question.setAnswerList(answerList);
-//
-//        put(QuestionController.MAPPING + "/" + question.getId() + "/answers", answer)
-//                .andExpect(status().isAccepted());
-//    }
-
-//    @Test
-//    @Rollback
-//    public void postOneQuestionAndPostOneComment() throws Exception {
-//
-//        final Question question = new Question();
-//        question.setTitle("Title");
-//        question.setDescription("Description");
-//
-//        post(QuestionController.MAPPING, question)
-//                .andExpect(status().isCreated())
-//                .andReturn();
-//
-//        CommentQuestion commentQuestion = new CommentQuestion();
-//        commentQuestion.setDescription("Description");
-//
-//        put(QuestionController.MAPPING + "/" + question.getId() + "/comment", commentQuestion)
-//                .andExpect(status().isAccepted());
-//    }
-
     @Test
     @Rollback
     public void postOneQuestionAndGetOneQuestion() throws Exception {
+        final User user = new User();
+        Date date = new Date(06,12,1995);
+        user.setName("Name");
+        user.setBirth(date);
+        user.setPassword("12345678");
+        user.setEmail("xdb@xdb.com");
+
+        post(UserController.MAPPING, user)
+                .andExpect(status().isCreated())
+                .andReturn();
+
         final Question question = new Question();
         question.setTitle("Title");
         question.setDescription("Description");
+        question.setUser(user);
         final MvcResult result = post(QuestionController.MAPPING, question)
                 .andExpect(status().isCreated())
                 .andReturn();
@@ -126,10 +107,21 @@ public class QuestionControllerTest extends SuperControllerTest {
     @Test
     @Rollback
     public void postOneQuestionAndGet() throws Exception {
+        final User user = new User();
+        Date date = new Date(06,12,1995);
+        user.setName("Name");
+        user.setBirth(date);
+        user.setPassword("12345678");
+        user.setEmail("xdb@xdb.com");
+
+        post(UserController.MAPPING, user)
+                .andExpect(status().isCreated())
+                .andReturn();
 
         final Question question = new Question();
         question.setTitle("Title 2");
         question.setDescription("Description 2");
+        question.setUser(user);
         post(QuestionController.MAPPING, question)
                 .andExpect(status().isCreated())
                 .andReturn();
@@ -149,9 +141,21 @@ public class QuestionControllerTest extends SuperControllerTest {
     @Test
     @Rollback
     public void postOneQuestionAndDeleteAndGet() throws Exception {
+        final User user = new User();
+        Date date = new Date(06,12,1995);
+        user.setName("Name");
+        user.setBirth(date);
+        user.setPassword("12345678");
+        user.setEmail("xdb@xdb.com");
+
+        post(UserController.MAPPING, user)
+                .andExpect(status().isCreated())
+                .andReturn();
+
         final Question question = new Question();
         question.setTitle("Title 3");
         question.setDescription("Description 3");
+        question.setUser(user);
 
         Question[] expected = new Question[]{
                 question
@@ -183,10 +187,21 @@ public class QuestionControllerTest extends SuperControllerTest {
     @Test
     @Rollback
     public void postOneQuestionAndPutAndGet() throws Exception {
+        final User user = new User();
+        Date date = new Date(06,12,1995);
+        user.setName("Name");
+        user.setBirth(date);
+        user.setPassword("12345678");
+        user.setEmail("xdb@xdb.com");
+
+        post(UserController.MAPPING, user)
+                .andExpect(status().isCreated())
+                .andReturn();
 
         final Question question = new Question();
         question.setTitle("Title 4");
         question.setDescription("Description 4");
+        question.setUser(user);
         post(QuestionController.MAPPING, question)
                 .andExpect(status().isCreated())
                 .andReturn();
