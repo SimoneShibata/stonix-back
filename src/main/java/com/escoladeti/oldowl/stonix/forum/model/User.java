@@ -1,6 +1,5 @@
 package com.escoladeti.oldowl.stonix.forum.model;
 
-import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 
 import javax.persistence.Entity;
@@ -14,12 +13,49 @@ public class User extends SuperEntity {
 
     private String name;
     private Date birth;
+    private String email;
     private Integer xp;
     private Integer reputation;
+    private String password;
+    private String image;
+    private boolean authenticated;
 
     public User() {
         this.xp = 0;
         this.reputation = 0;
+        this.authenticated = false;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public boolean isAuthenticated() {
+        return authenticated;
+    }
+
+    public void setAuthenticated(boolean authenticated) {
+        this.authenticated = authenticated;
     }
 
     public Date getBirth() {
