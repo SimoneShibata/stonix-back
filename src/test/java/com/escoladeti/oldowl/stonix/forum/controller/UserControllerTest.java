@@ -45,11 +45,15 @@ public class UserControllerTest extends SuperControllerTest {
         Date date = new Date(2016,12,06);
         expected.setName("Name");
         expected.setBirth(date);
+        expected.setPassword("12345678");
+        expected.setEmail("xdb@xdb.com");
 
         final User user = new User();
 
         user.setName("Name");
         user.setBirth(date);
+        user.setPassword("12345678");
+        user.setEmail("xdb@xdb.com");
 
         final MvcResult result = post(UserController.MAPPING, user)
                 .andExpect(status().isCreated())
@@ -66,6 +70,8 @@ public class UserControllerTest extends SuperControllerTest {
         final User user = new User();
         user.setName("Name");
         user.setBirth(date);
+        user.setPassword("12345678");
+        user.setEmail("xdb@xdb.com");
 
         final MvcResult result = post(UserController.MAPPING, user)
                 .andExpect(status().isCreated())
@@ -89,6 +95,8 @@ public class UserControllerTest extends SuperControllerTest {
         final User user = new User();
         user.setName("Name");
         user.setBirth(date);
+        user.setPassword("12345678");
+        user.setEmail("xdb@xdb.com");
 
         post(UserController.MAPPING, user)
                 .andExpect(status().isCreated())
@@ -113,6 +121,8 @@ public class UserControllerTest extends SuperControllerTest {
         final User user = new User();
         user.setName("Name");
         user.setBirth(date);
+        user.setPassword("12345678");
+        user.setEmail("xdb@xdb.com");
 
         User[] expected = new User[]{
                 user
@@ -148,6 +158,8 @@ public class UserControllerTest extends SuperControllerTest {
         final User user = new User();
         user.setName("Name");
         user.setBirth(date);
+        user.setPassword("12345678");
+        user.setEmail("xdb@xdb.com");
 
         post(UserController.MAPPING, user)
                 .andExpect(status().isCreated())
@@ -167,6 +179,8 @@ public class UserControllerTest extends SuperControllerTest {
 
         user.setName("Name put");
         user.setBirth(date);
+        user.setPassword("12345678");
+        user.setEmail("xdb@xdb.com");
 
         put(UserController.MAPPING, user)
                 .andExpect(status().isAccepted());
@@ -198,6 +212,8 @@ public class UserControllerTest extends SuperControllerTest {
         User user = new User();
         user.setName("Name");
         user.setBirth(date);
+        user.setPassword("12345678");
+        user.setEmail("xdb@xdb.com");
 
         post(UserController.MAPPING, user)
                 .andExpect(status().isCreated())
@@ -205,6 +221,8 @@ public class UserControllerTest extends SuperControllerTest {
         Date date2 = new Date();
         user.setName("");
         user.setBirth(date2);
+        user.setPassword("12345678");
+        user.setEmail("xdb@xdb.com");
 
         put(UserController.MAPPING, user)
                 .andExpect(status().isNotAcceptable());
