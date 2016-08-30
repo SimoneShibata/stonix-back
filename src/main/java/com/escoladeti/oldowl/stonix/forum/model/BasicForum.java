@@ -5,6 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 import java.util.Date;
 
@@ -18,6 +19,17 @@ public abstract class BasicForum extends Forum {
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date lastUpdate;
     private Integer nice;
+
+    @ManyToOne
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public BasicForum() {
         this.lastUpdate = new Date(System.currentTimeMillis());

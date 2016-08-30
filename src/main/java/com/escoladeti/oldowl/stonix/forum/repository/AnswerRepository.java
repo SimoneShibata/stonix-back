@@ -11,4 +11,6 @@ import java.util.List;
 @Repository
 public interface AnswerRepository extends SuperRepository<Answer> {
     List<Answer> findByQuestionIdAndDeadIsFalseOrderByNiceDesc(String questionId);
+
+    List<Answer> findByDeadIsFalseAndUserIdOrderByLastUpdateDesc(String userId);
 }

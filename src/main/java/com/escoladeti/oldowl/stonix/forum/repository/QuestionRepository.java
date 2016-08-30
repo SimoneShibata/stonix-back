@@ -1,6 +1,7 @@
 package com.escoladeti.oldowl.stonix.forum.repository;
 
 import com.escoladeti.oldowl.stonix.forum.model.Question;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
@@ -9,4 +10,6 @@ import java.util.List;
  */
 public interface QuestionRepository extends SuperRepository<Question> {
     List<Question> findAllByDeadIsFalseOrderByLastUpdateDesc();
+
+    List<Question> findByDeadIsFalseAndUserIdOrderByLastUpdateDesc(String userId);
 }
