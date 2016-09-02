@@ -29,8 +29,9 @@ public class LoginController extends SuperController<User, UserRepository> {
     @RequestMapping(method = RequestMethod.POST, value = "/login")
     public ResponseEntity<User> login(@RequestBody User user) {
         User userCompare = repository.findByEmail(user.getEmail());
+        User userAuth = repository.findByAuthenticatedIsTrue();
         try {
-            if (user.getPassword().equals(userCompare.getPassword())) {
+            if (user.getPassword().equals(userCompare.getPassword()) && null == userAuth)  {
                 userCompare.setAuthenticated(true);
                 return super.update(userCompare);
             } else {
