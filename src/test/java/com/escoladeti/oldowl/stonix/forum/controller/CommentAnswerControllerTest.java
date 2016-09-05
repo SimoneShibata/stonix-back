@@ -1,7 +1,6 @@
 package com.escoladeti.oldowl.stonix.forum.controller;
 
 import com.escoladeti.oldowl.stonix.forum.model.CommentAnswer;
-import com.escoladeti.oldowl.stonix.forum.model.CommentQuestion;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -31,7 +30,7 @@ public class CommentAnswerControllerTest extends SuperControllerTest {
     public void testGetAllClean() throws Exception {
         final List<CommentAnswer> expected = new ArrayList<>();
 
-        get(CommentQuestionController.MAPPING)
+        get(CommentAnswerController.MAPPING)
                 .andExpect(status().isOk())
                 .andExpect(content().string(equalTo(expected.toString())));
     }

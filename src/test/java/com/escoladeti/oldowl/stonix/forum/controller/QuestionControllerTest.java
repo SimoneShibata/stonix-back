@@ -1,7 +1,5 @@
 package com.escoladeti.oldowl.stonix.forum.controller;
 
-import com.escoladeti.oldowl.stonix.forum.model.Answer;
-import com.escoladeti.oldowl.stonix.forum.model.CommentQuestion;
 import com.escoladeti.oldowl.stonix.forum.model.Question;
 import com.escoladeti.oldowl.stonix.forum.model.User;
 import org.junit.Assert;

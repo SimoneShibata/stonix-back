@@ -1,17 +1,13 @@
 package com.escoladeti.oldowl.stonix.forum.controller;
 
 import com.escoladeti.oldowl.stonix.forum.model.Answer;
-import com.escoladeti.oldowl.stonix.forum.model.CommentQuestion;
 import com.escoladeti.oldowl.stonix.forum.model.Question;
 import com.escoladeti.oldowl.stonix.forum.repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.StringArrayPropertyEditor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 import java.lang.NullPointerException;
-import java.util.AbstractQueue;
 import java.util.Date;
 import java.util.List;
 
