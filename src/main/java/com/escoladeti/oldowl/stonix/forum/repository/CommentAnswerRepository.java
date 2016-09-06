@@ -9,4 +9,6 @@ import java.util.List;
  */
 public interface CommentAnswerRepository extends SuperRepository<CommentAnswer> {
     List<CommentAnswer> findByAnswerIdAndDeadIsFalse(String answerId);
+
+    Integer countByAnswerId(String answerId);
 }

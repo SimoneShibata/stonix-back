@@ -20,7 +20,7 @@
             <column name="xp" type="integer">
                 <constraints nullable="false"/>
             </column>
-            <column name="reputation" type="integer">
+            <column name="punctuation" type="integer">
                 <constraints nullable="false"/>
             </column>
         </createTable>
