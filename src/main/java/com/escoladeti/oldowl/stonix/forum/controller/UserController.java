@@ -5,10 +5,9 @@ import com.escoladeti.oldowl.stonix.forum.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.persistence.criteria.CriteriaBuilder;
 
 /**
  * Created by Felipe on 09/04/2016.
@@ -44,4 +43,25 @@ public class UserController extends SuperController<User, UserRepository> {
         return new ResponseEntity<>(repository.findByAuthenticatedIsTrue(), HttpStatus.OK);
     }
 
+    @RequestMapping(method = RequestMethod.PUT, value = "/assign/xp/{xp}")
+    public ResponseEntity<User> assignXp(@RequestBody final User userPost, @PathVariable("xp") final Integer xp){
+        try{
+            User user = repository.findOne(userPost.getId());
+            user.updateXp(xp);
+            return super.update(user);
+        }catch (NullPointerException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, value = "/assign/punctuation/{points}")
+    public ResponseEntity<User> assignPunctuation(@RequestBody final User userPut, @PathVariable("points") final Integer points){
+        try{
+            User user = repository.findOne(userPut.getId());
+            user.updatePunctuation(points);
+            return super.update(user);
+        }catch (NullPointerException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 }

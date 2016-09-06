@@ -71,7 +71,6 @@ public class QuestionController extends SuperController<Question, QuestionReposi
         answer.setQuestion(question);
         return super.update(question);
     }
-
     @Override
     @RequestMapping(method = RequestMethod.DELETE, value ="/{id}")
     public ResponseEntity<Question> kill(@PathVariable("id") final String id){

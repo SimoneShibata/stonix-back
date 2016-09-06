@@ -8,22 +8,58 @@ import java.util.Date;
 /**
  * Created by felipe on 26/08/16.
  */
+
 @Entity
 public class User extends SuperEntity {
-
     private String name;
     private Date birth;
     private String email;
     private Integer xp;
-    private Integer reputation;
+    private Integer xpForNextLevel;
+    private Integer level;
+    private Integer punctuation;
     private String password;
     private String image;
     private boolean authenticated;
 
     public User() {
         this.xp = 0;
-        this.reputation = 0;
+        this.punctuation = 0;
         this.authenticated = false;
+        this.xpForNextLevel = 40;
+        this.level = 0;
+    }
+
+    public Integer getXp() {
+        return xp;
+    }
+
+    public void setXp(Integer xp) {
+        this.xp = xp;
+    }
+
+    public Integer getXpForNextLevel() {
+        return xpForNextLevel;
+    }
+
+    public void setXpForNextLevel(Integer xpForNextLevel) {
+        this.xpForNextLevel = xpForNextLevel;
+    }
+
+    public Integer getLevel() {
+        return level;
+    }
+
+    public void setLevel(Integer level) {
+        this.level = level;
+    }
+
+    public Integer getPunctuation() {
+        return punctuation;
+    }
+
+    public void setPunctuation(Integer punctuation) {
+        this.punctuation = punctuation;
     }
 
     public String getImage() {
@@ -32,6 +68,10 @@ public class User extends SuperEntity {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public boolean isAuthenticated() {
+        return authenticated;
     }
 
     public void setPassword(String password) {
@@ -50,10 +90,6 @@ public class User extends SuperEntity {
         this.email = email;
     }
 
-    public boolean isAuthenticated() {
-        return authenticated;
-    }
-
     public void setAuthenticated(boolean authenticated) {
         this.authenticated = authenticated;
     }
@@ -66,28 +102,33 @@ public class User extends SuperEntity {
         this.birth = birth;
     }
 
-    public Integer getXp() {
-        return xp;
-    }
-
-    public void setXp(Integer xp) {
-        this.xp = xp;
-    }
-
-    public Integer getReputation() {
-        return reputation;
-    }
-
-    public void setReputation(Integer reputation) {
-        this.reputation = reputation;
-    }
-
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void updatePunctuation(Integer points){
+        this.punctuation = this.punctuation + points;
+    }
+
+    public void updateLevel(){
+        this.level++;
+    }
+
+    public void updateXpForNextLevel(Integer xp){
+        this.xp = xp - this.xpForNextLevel;
+        this.xpForNextLevel = xpForNextLevel * 2;
+        this.updateLevel();
+    }
+
+    public void updateXp(Integer xp){
+        this.xp = this.xp + xp;
+        if(this.xp >= this.xpForNextLevel){
+            this.updateXpForNextLevel(this.xp );
+        }
     }
 
     @Override
@@ -109,8 +150,14 @@ public class User extends SuperEntity {
         return "User{" +
                 "name='" + name + '\'' +
                 ", birth=" + birth +
+                ", email='" + email + '\'' +
                 ", xp=" + xp +
-                ", reputation=" + reputation +
+                ", xpForNextLevel=" + xpForNextLevel +
+                ", level=" + level +
+                ", punctuation=" + punctuation +
+                ", password='" + password + '\'' +
+                ", image='" + image + '\'' +
+                ", authenticated=" + authenticated +
                 '}';
     }
 }
