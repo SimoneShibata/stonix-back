@@ -100,4 +100,8 @@ public class AnswerController extends SuperController<Answer, AnswerRepository> 
         return new ResponseEntity<>(answers, HttpStatus.OK);
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/count/question/{questionId}")
+    public ResponseEntity<Integer> countAnswerByQuestion(@PathVariable("questionId") final String questionId){
+        return new ResponseEntity<>(repository.countByQuestionId(questionId), HttpStatus.OK);
+    }
 }
