@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.criteria.CriteriaBuilder;
+import java.util.List;
 
 /**
  * Created by Felipe on 09/04/2016.
@@ -63,5 +64,17 @@ public class UserController extends SuperController<User, UserRepository> {
         }catch (NullPointerException e){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/ranking/punctuation")
+    public ResponseEntity<List<User>> rankingByPunctuation(){
+        List<User> users = repository.findAllByDeadIsFalseOrderByPunctuationDesc();
+        return new ResponseEntity<>(users, HttpStatus.OK);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/ranking/level")
+    public ResponseEntity<List<User>> rankingByLevel(){
+        List<User> users = repository.findAllByDeadIsFalseOrderByLevelDesc();
+        return new ResponseEntity<>(users, HttpStatus.OK);
     }
 }
