@@ -5,16 +5,14 @@ import com.escoladeti.oldowl.stonix.forum.repository.BadgeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by Felipe on 09/04/2016.
  */
 @RestController
 @RequestMapping(BadgeController.MAPPING)
+@CrossOrigin("*")
 public class BadgeController extends SuperController<Badge, BadgeRepository> {
     public static final String MAPPING = "/api/badges";
 

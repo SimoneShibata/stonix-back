@@ -17,12 +17,26 @@ public class Question extends BasicForum{
 
     private String title;
     private Integer views;
+    private Integer numberAnswers;
     private Boolean answered;
 
     public Question() {
         super();
         this.views = 0;
+        this.numberAnswers = 0;
         this.answered = false;
+    }
+
+    public Integer getNumberAnswers() {
+        return numberAnswers;
+    }
+
+    public void setNumberAnswers(Integer numberAnswers) {
+        this.numberAnswers = numberAnswers;
+    }
+
+    public void setAnswered(Boolean answered) {
+        this.answered = answered;
     }
 
     public Boolean getAnswered() {

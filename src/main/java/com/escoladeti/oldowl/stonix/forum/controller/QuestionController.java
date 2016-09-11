@@ -16,6 +16,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping(QuestionController.MAPPING)
+@CrossOrigin("*")
 public class QuestionController extends SuperController<Question, QuestionRepository> {
     public static final String MAPPING = "/api/questions";
 
