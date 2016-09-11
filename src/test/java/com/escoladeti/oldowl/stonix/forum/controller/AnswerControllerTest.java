@@ -342,7 +342,7 @@ public class AnswerControllerTest extends SuperControllerTest {
         answer.setQuestion(question);
 
         post(AnswerController.MAPPING, answer)
-                .andExpect(status().isCreated())
+                .andExpect(status().isNotAcceptable())
                 .andReturn();
 
         answer.setDescription("");

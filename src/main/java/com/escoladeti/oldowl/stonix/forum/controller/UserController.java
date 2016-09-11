@@ -15,6 +15,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping(UserController.MAPPING)
+@CrossOrigin("*")
 public class UserController extends SuperController<User, UserRepository> {
     public static final String MAPPING = "/api/users";
 

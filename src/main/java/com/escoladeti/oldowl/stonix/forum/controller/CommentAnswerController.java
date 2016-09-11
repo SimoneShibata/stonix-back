@@ -1,14 +1,14 @@
 package com.escoladeti.oldowl.stonix.forum.controller;
 
+import com.escoladeti.oldowl.stonix.forum.model.Answer;
 import com.escoladeti.oldowl.stonix.forum.model.CommentAnswer;
+import com.escoladeti.oldowl.stonix.forum.repository.AnswerRepository;
 import com.escoladeti.oldowl.stonix.forum.repository.CommentAnswerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,15 +17,31 @@ import java.util.List;
  */
 @RestController
 @RequestMapping(CommentAnswerController.MAPPING)
+@CrossOrigin("*")
 public class CommentAnswerController extends SuperController<CommentAnswer, CommentAnswerRepository> {
     public static final String MAPPING = "/api/comment/answers";
 
     @Autowired
     private CommentAnswerRepository repository;
+    @Autowired
+    private AnswerRepository answerRepository;
 
     @Override
     public CommentAnswerRepository getRepository() {
         return repository;
+    }
+
+    @Override
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity<CommentAnswer> create(@RequestBody final CommentAnswer commentAnswer) {
+        try {
+            Answer answer = answerRepository.findOne(commentAnswer.getAnswer().getId());
+            answer.setNumberComments(answer.getNumberComments() + 1);
+            answerRepository.save(answer);
+            return new ResponseEntity<>(getRepository().save(commentAnswer), HttpStatus.CREATED);
+        } catch (DataIntegrityViolationException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+        }
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/answer/{answerId}")

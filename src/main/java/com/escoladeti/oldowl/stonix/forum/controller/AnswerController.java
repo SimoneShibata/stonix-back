@@ -5,6 +5,7 @@ import com.escoladeti.oldowl.stonix.forum.model.Question;
 import com.escoladeti.oldowl.stonix.forum.repository.AnswerRepository;
 import com.escoladeti.oldowl.stonix.forum.repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +18,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping(AnswerController.MAPPING)
+@CrossOrigin("*")
 public class AnswerController extends SuperController<Answer, AnswerRepository> {
     public static final String MAPPING = "/api/answers";
 
@@ -29,6 +31,19 @@ public class AnswerController extends SuperController<Answer, AnswerRepository> 
     @Override
     public AnswerRepository getRepository() {
         return repository;
+    }
+
+    @Override
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity<Answer> create(@RequestBody final Answer answer) {
+        try {
+            Question question = questionRepository.findOne(answer.getQuestion().getId());
+            question.setNumberAnswers(question.getNumberAnswers()+ 1);
+            questionRepository.save(question);
+            return super.create(answer);
+        } catch (DataIntegrityViolationException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+        }
     }
 
     @Override

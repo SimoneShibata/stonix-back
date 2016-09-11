@@ -16,8 +16,10 @@ public class Answer extends BasicForum {
     private Question question;
 
     private Boolean bestAnswer;
+    private Integer numberComments;
 
     public Answer() {
+        this.numberComments = 0;
         this.bestAnswer = false;
     }
 
@@ -29,6 +31,13 @@ public class Answer extends BasicForum {
         this.bestAnswer = bestAnswer;
     }
 
+    public Integer getNumberComments() {
+        return numberComments;
+    }
+
+    public void setNumberComments(Integer numberComments) {
+        this.numberComments = numberComments;
+    }
 
     public void acceptAnswer(){
         this.bestAnswer = true;
