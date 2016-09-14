@@ -102,6 +102,9 @@ public class AnswerController extends SuperController<Answer, AnswerRepository> 
             if (answer.getBestAnswer().equals(true)) {
                 return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
             } else {
+                Question question = questionRepository.findOne(answer.getQuestion().getId());
+                question.setNumberAnswers(question.getNumberAnswers() - 1);
+                questionRepository.save(question);
                 return super.kill(id);
             }
         }catch (NullPointerException e){
