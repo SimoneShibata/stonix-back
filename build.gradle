@@ -42,7 +42,7 @@ dependencies {
     compile "org.springframework.boot:spring-boot-starter-web"
     compile "com.google.guava:guava:$GUAVA_VERSION"
     compile "org.liquibase:liquibase-core"
-    compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.6'
+    compile group: 'mysql', name: 'mysql-connector-java'
 
     testCompile "org.springframework.boot:spring-boot-starter-test"
 }
