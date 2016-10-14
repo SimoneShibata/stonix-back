@@ -20,6 +20,7 @@ public class User extends SuperEntity {
     private Integer punctuation;
     private String password;
     private String image;
+    private Boolean tutor;
     private boolean authenticated;
 
     public User() {
@@ -28,6 +29,7 @@ public class User extends SuperEntity {
         this.authenticated = false;
         this.xpForNextLevel = 40;
         this.level = 0;
+        this.tutor = false;
     }
 
     public Integer getXp() {
@@ -52,6 +54,14 @@ public class User extends SuperEntity {
 
     public void setLevel(Integer level) {
         this.level = level;
+    }
+
+    public Boolean getTutor() {
+        return tutor;
+    }
+
+    public void setTutor(Boolean tutor) {
+        this.tutor = tutor;
     }
 
     public Integer getPunctuation() {
