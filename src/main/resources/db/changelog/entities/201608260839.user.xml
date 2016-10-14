@@ -20,6 +20,9 @@
             <column name="xp" type="integer">
                 <constraints nullable="false"/>
             </column>
+            <column name="tutor" type="boolean">
+                <constraints nullable="false"/>
+            </column>
             <column name="punctuation" type="integer">
                 <constraints nullable="false"/>
             </column>
