@@ -75,6 +75,10 @@ task wrapper(type: Wrapper) {
             TASKS
   */
 
+task productionFelipe << {
+    apply from: rootProject.file('build-prod-my-properties.gradle');
+}
+
 task production << {
     apply from: rootProject.file('build-prod.gradle');
 }
