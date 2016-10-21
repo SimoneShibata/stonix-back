@@ -13,8 +13,6 @@ import java.util.List;
 public interface UserRepository extends SuperRepository<User> {
     User findByEmail(String email);
 
-    User findByAuthenticatedIsTrue();
-
     List<User> findAllByDeadIsFalseOrderByPunctuationDesc();
 
     List<User> findAllByDeadIsFalseOrderByLevelDesc();

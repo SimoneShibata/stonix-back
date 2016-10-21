@@ -11,9 +11,6 @@
             <column name="password" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="authenticated" type="boolean">
-                <constraints nullable="false"/>
-            </column>
             <column name="image" type="varchar(255)">
                 <constraints nullable="true"/>
             </column>

@@ -40,11 +40,6 @@ public class UserController extends SuperController<User, UserRepository> {
         }
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/auth")
-    public ResponseEntity<User> getAuth(){
-        return new ResponseEntity<>(repository.findByAuthenticatedIsTrue(), HttpStatus.OK);
-    }
-
     @RequestMapping(method = RequestMethod.PUT, value = "/assign/xp/{xp}")
     public ResponseEntity<User> assignXp(@RequestBody final User userPost, @PathVariable("xp") final Integer xp){
         try{

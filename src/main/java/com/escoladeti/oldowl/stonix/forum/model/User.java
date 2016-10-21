@@ -21,12 +21,10 @@ public class User extends SuperEntity {
     private String password;
     private String image;
     private Boolean tutor;
-    private boolean authenticated;
 
     public User() {
         this.xp = 0;
         this.punctuation = 0;
-        this.authenticated = false;
         this.xpForNextLevel = 40;
         this.level = 0;
         this.tutor = false;
@@ -80,10 +78,6 @@ public class User extends SuperEntity {
         this.image = image;
     }
 
-    public boolean isAuthenticated() {
-        return authenticated;
-    }
-
     public void setPassword(String password) {
         this.password = password;
     }
@@ -98,10 +92,6 @@ public class User extends SuperEntity {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public void setAuthenticated(boolean authenticated) {
-        this.authenticated = authenticated;
     }
 
     public Date getBirth() {
@@ -167,7 +157,6 @@ public class User extends SuperEntity {
                 ", punctuation=" + punctuation +
                 ", password='" + password + '\'' +
                 ", image='" + image + '\'' +
-                ", authenticated=" + authenticated +
                 '}';
     }
 }
