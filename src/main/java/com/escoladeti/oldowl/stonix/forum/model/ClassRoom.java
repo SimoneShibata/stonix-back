@@ -13,9 +13,6 @@ public class ClassRoom extends SuperEntity {
     @ManyToOne
     private User teacher;
 
-    @ManyToMany
-    private List<User> students;
-
     private String name;
     private String description;
 
@@ -25,14 +22,6 @@ public class ClassRoom extends SuperEntity {
 
     public void setTeacher(User teacher) {
         this.teacher = teacher;
-    }
-
-    public List<User> getStudents() {
-        return students;
-    }
-
-    public void setStudents(List<User> students) {
-        this.students = students;
     }
 
     public String getName() {
@@ -59,7 +48,6 @@ public class ClassRoom extends SuperEntity {
         ClassRoom classRoom = (ClassRoom) o;
 
         if (teacher != null ? !teacher.equals(classRoom.teacher) : classRoom.teacher != null) return false;
-        if (students != null ? !students.equals(classRoom.students) : classRoom.students != null) return false;
         if (name != null ? !name.equals(classRoom.name) : classRoom.name != null) return false;
         return description != null ? description.equals(classRoom.description) : classRoom.description == null;
 
@@ -68,7 +56,6 @@ public class ClassRoom extends SuperEntity {
     @Override
     public int hashCode() {
         int result = teacher != null ? teacher.hashCode() : 0;
-        result = 31 * result + (students != null ? students.hashCode() : 0);
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
         return result;
@@ -78,7 +65,6 @@ public class ClassRoom extends SuperEntity {
     public String toString() {
         return "ClassRoom{" +
                 "teacher=" + teacher +
-                ", students=" + students +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 '}';

@@ -32,4 +32,13 @@ public class ClassRoomController extends SuperController<ClassRoom, ClassRoomRep
         return repository;
     }
 
+    @Override
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity<ClassRoom> create(@RequestBody final ClassRoom classRoom) {
+        try {
+            return new ResponseEntity<>(getRepository().save(classRoom), HttpStatus.CREATED);
+        } catch (DataIntegrityViolationException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+        }
+    }
 }
