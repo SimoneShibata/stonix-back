@@ -1,0 +1,32 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+    <changeSet author="felipe.paetzold" id="201610241343">
+        <createTable tableName="class_room_students">
+            <column name="students_id" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="class_room_id" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseColumnNames="students_id"
+                                 baseTableName="class_room_students"
+                                 constraintName="fk_class_room_students_classroom"
+                                 deferrable="false"
+                                 initiallyDeferred="false"
+                                 deleteCascade="true"
+                                 referencedColumnNames="id"
+                                 referencedTableName="user"/>
+        <addForeignKeyConstraint baseColumnNames="class_room_id"
+                                 baseTableName="class_room_students"
+                                 constraintName="fk_class_room_classroom_students"
+                                 deferrable="false"
+                                 initiallyDeferred="false"
+                                 deleteCascade="true"
+                                 referencedColumnNames="id"
+                                 referencedTableName="class_room"/>
+    </changeSet>
+</databaseChangeLog>

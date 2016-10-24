@@ -13,8 +13,19 @@ public class ClassRoom extends SuperEntity {
     @ManyToOne
     private User teacher;
 
+    @ManyToMany
+    private List<User> students;
+
     private String name;
     private String description;
+
+    public List<User> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<User> students) {
+        this.students = students;
+    }
 
     public User getTeacher() {
         return teacher;
