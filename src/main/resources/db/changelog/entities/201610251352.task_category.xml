@@ -1,0 +1,33 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+    <changeSet author="felipe.paetzold" id="201610251352">
+        <createTable tableName="task_category">
+            <column name="id" type="varchar(255)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="dead" type="boolean">
+                <constraints nullable="false"/>
+            </column>
+            <column name="class_room_id" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseColumnNames="class_room_id"
+                                 baseTableName="task_category"
+                                 constraintName="fk_task_category_class_room"
+                                 deferrable="false"
+                                 initiallyDeferred="false"
+                                 deleteCascade="true"
+                                 referencedColumnNames="id"
+                                 referencedTableName="class_room"/>
+    </changeSet>
+</databaseChangeLog>
