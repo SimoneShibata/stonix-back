@@ -56,6 +56,14 @@ public class ClassRoom extends SuperEntity {
         this.students.add(student);
     }
 
+    public void removeStudent(String studentId) {
+        for(User student : this.students){
+            if(student.getId().equals(studentId)){
+                this.students.remove(student);
+            }
+        }
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
