@@ -83,6 +83,10 @@ task production << {
     apply from: rootProject.file('build-prod.gradle');
 }
 
+task productionNotPass << {
+    apply from: rootProject.file('build-prod-not-pass.gradle');
+}
+
 task development << {
     apply from: rootProject.file('build-dev.gradle');
 }

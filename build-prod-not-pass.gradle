@@ -1,0 +1,7 @@
+println project.getName() + ' :: [PROFILE] :: production-not-pass'
+
+dependencies {
+    runtime('mysql:mysql-connector-java')
+}
+
+bootRun.systemProperty 'spring.profiles.active', 'prodNotPass'
