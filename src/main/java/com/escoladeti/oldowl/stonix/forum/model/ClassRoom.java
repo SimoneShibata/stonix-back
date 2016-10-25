@@ -1,10 +1,9 @@
 package com.escoladeti.oldowl.stonix.forum.model;
 
-import javax.jws.soap.SOAPBinding;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import java.util.List;
+import java.util.Set;
 
 /**
  * Created by felipe on 13/10/16.
@@ -15,16 +14,16 @@ public class ClassRoom extends SuperEntity {
     private User teacher;
 
     @ManyToMany
-    private List<User> students;
+    private Set<User> students;
 
     private String name;
     private String description;
 
-    public List<User> getStudents() {
+    public Set<User> getStudents() {
         return students;
     }
 
-    public void setStudents(List<User> students) {
+    public void setStudents(Set<User> students) {
         this.students = students;
     }
 
