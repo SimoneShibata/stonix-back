@@ -3,6 +3,7 @@ package com.escoladeti.oldowl.stonix.forum.controller;
 import com.escoladeti.oldowl.stonix.forum.model.Answer;
 import com.escoladeti.oldowl.stonix.forum.model.ClassRoom;
 import com.escoladeti.oldowl.stonix.forum.model.Question;
+import com.escoladeti.oldowl.stonix.forum.model.User;
 import com.escoladeti.oldowl.stonix.forum.repository.AnswerRepository;
 import com.escoladeti.oldowl.stonix.forum.repository.ClassRoomRepository;
 import com.escoladeti.oldowl.stonix.forum.repository.QuestionRepository;
@@ -40,5 +41,12 @@ public class ClassRoomController extends SuperController<ClassRoom, ClassRoomRep
         } catch (DataIntegrityViolationException e) {
             return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
         }
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/student/{id}")
+    public ResponseEntity<ClassRoom> addStudent(@RequestBody final User student, @PathVariable("id") String id) {
+        ClassRoom classRoom = repository.findOne(id);
+        classRoom.addStudent(student);
+        return update(classRoom);
     }
 }

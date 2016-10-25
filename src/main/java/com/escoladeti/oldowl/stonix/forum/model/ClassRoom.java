@@ -1,5 +1,6 @@
 package com.escoladeti.oldowl.stonix.forum.model;
 
+import javax.jws.soap.SOAPBinding;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -49,6 +50,10 @@ public class ClassRoom extends SuperEntity {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public void addStudent(User student) {
+        this.students.add(student);
     }
 
     @Override
