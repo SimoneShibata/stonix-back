@@ -3,13 +3,10 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
-    <changeSet author="felipe.paetzold" id="201610251634">
-        <createTable tableName="task">
+    <changeSet author="felipe.paetzold" id="201610260904">
+        <createTable tableName="task_option">
             <column name="id" type="varchar(255)">
                 <constraints primaryKey="true" nullable="false"/>
-            </column>
-            <column name="title" type="varchar(255)">
-                <constraints nullable="false"/>
             </column>
             <column name="description" type="text">
                 <constraints nullable="false"/>
@@ -17,20 +14,20 @@
             <column name="dead" type="boolean">
                 <constraints nullable="false"/>
             </column>
-            <column name="closing_date" type="date">
+            <column name="correct" type="boolean">
                 <constraints nullable="false"/>
             </column>
-            <column name="task_category_id" type="varchar(255)">
+            <column name="task_id" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
         </createTable>
-        <addForeignKeyConstraint baseColumnNames="task_category_id"
-                                 baseTableName="task"
-                                 constraintName="fk_task_task_category"
+        <addForeignKeyConstraint baseColumnNames="task_id"
+                                 baseTableName="task_option"
+                                 constraintName="fk_task_option_task"
                                  deferrable="false"
                                  initiallyDeferred="false"
                                  deleteCascade="true"
                                  referencedColumnNames="id"
-                                 referencedTableName="task_category"/>
+                                 referencedTableName="task"/>
     </changeSet>
 </databaseChangeLog>

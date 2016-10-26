@@ -2,6 +2,7 @@ package com.escoladeti.oldowl.stonix.forum.model;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import java.util.Date;
 
 /**
  * Created by TI2 on 25/10/2016.
@@ -13,9 +14,18 @@ public class Task extends SuperEntity {
 
     private String title;
     private String description;
+    private Date closingDate;
 
     public TaskCategory getTaskCategory() {
         return taskCategory;
+    }
+
+    public Date getClosingDate() {
+        return closingDate;
+    }
+
+    public void setClosingDate(Date closingDate) {
+        this.closingDate = closingDate;
     }
 
     public void setTaskCategory(TaskCategory taskCategory) {
