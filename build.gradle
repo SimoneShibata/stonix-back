@@ -46,6 +46,8 @@ dependencies {
     compile "com.google.guava:guava:$GUAVA_VERSION"
     compile "org.liquibase:liquibase-core"
     compile group: 'mysql', name: 'mysql-connector-java'
+    compile("org.springframework.boot:spring-boot-starter-security")
+    compile 'io.jsonwebtoken:jjwt:0.7.0'
 
     testCompile "org.springframework.boot:spring-boot-starter-test"
 }
