@@ -73,4 +73,10 @@ public class UserController extends SuperController<User, UserRepository> {
         List<User> users = repository.findAllByDeadIsFalseOrderByLevelDesc();
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/email")
+    public ResponseEntity<User> getByEmail(@RequestBody User userPartial){
+        User user = repository.findByEmail(userPartial.getEmail());
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
 }

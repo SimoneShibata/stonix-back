@@ -1,8 +1,11 @@
 package com.escoladeti.oldowl.stonix.security.jwt;
 
-public class AccountCredentials {
+import com.fasterxml.jackson.annotation.JsonProperty;
 
+public class AccountCredentials {
+    @JsonProperty("username")
     private String username;
+    @JsonProperty("password")
     private String password;
 
     String getUsername() { return username; }
