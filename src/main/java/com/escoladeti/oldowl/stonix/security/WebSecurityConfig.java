@@ -1,5 +1,6 @@
 package com.escoladeti.oldowl.stonix.security;
 
+import com.escoladeti.oldowl.stonix.security.jwt.AuthenticatedUser;
 import com.escoladeti.oldowl.stonix.security.jwt.JWTAuthenticationFilter;
 import com.escoladeti.oldowl.stonix.security.jwt.JWTLoginFilter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -51,7 +52,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowCredentials(true);
-        configuration.addAllowedOrigin("http://localhost:8080");
+        configuration.addAllowedOrigin("*");
         configuration.addAllowedHeader("*");
         configuration.addAllowedMethod("*");
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();

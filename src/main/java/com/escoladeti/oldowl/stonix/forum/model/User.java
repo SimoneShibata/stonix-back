@@ -1,5 +1,6 @@
 package com.escoladeti.oldowl.stonix.forum.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.common.base.Objects;
 
 import javax.persistence.Entity;
@@ -18,7 +19,10 @@ public class User extends SuperEntity {
     private Integer xpForNextLevel;
     private Integer level;
     private Integer punctuation;
+
+    @JsonIgnore
     private String password;
+
     private String image;
     private Boolean tutor;
 

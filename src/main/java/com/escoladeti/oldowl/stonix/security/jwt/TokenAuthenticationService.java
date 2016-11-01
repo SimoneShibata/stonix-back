@@ -26,6 +26,23 @@ public class TokenAuthenticationService {
         response.addHeader(headerString,tokenPrefix + " "+ JWT);
     }
 
+    public String getUserName(String token){
+        if(token != null)
+        {
+            // parse the token.
+            String username = Jwts.parser()
+                    .setSigningKey(secret)
+                    .parseClaimsJws(token)
+                    .getBody()
+                    .getSubject();
+            if(username != null) // we managed to retrieve a user
+            {
+                return username;
+            }
+        }
+        return null;
+    }
+
     public Authentication getAuthentication(HttpServletRequest request)
     {
         String token = request.getHeader(headerString);

@@ -8,7 +8,7 @@ public class AccountCredentials {
     @JsonProperty("password")
     private String password;
 
-    String getUsername() { return username; }
+    public String getUsername() { return username; }
     String getPassword() { return password; }
 
     public void setUsername(String _username) { this.username = _username; }
