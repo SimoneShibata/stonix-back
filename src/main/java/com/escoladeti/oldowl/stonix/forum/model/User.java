@@ -19,8 +19,6 @@ public class User extends SuperEntity {
     private Integer xpForNextLevel;
     private Integer level;
     private Integer punctuation;
-
-    @JsonIgnore
     private String password;
 
     private String image;
