@@ -3,17 +3,13 @@ package com.escoladeti.oldowl.stonix.forum.model;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
-import java.util.List;
 
 /**
  * Created by tdc on 01/05/16.
  */
 @Entity
-public class Question extends BasicForum{
+public class Question extends BasicForum {
 
     private String title;
     private Integer views;
@@ -43,7 +39,7 @@ public class Question extends BasicForum{
         return answered;
     }
 
-    public void acceptAnswer(){
+    public void acceptAnswer() {
         this.answered = true;
     }
 
@@ -62,7 +58,6 @@ public class Question extends BasicForum{
     public void setTitle(final String title) {
         this.title = title;
     }
-
 
     @Override
     public boolean equals(Object o) {
