@@ -5,7 +5,7 @@ import com.escoladeti.oldowl.stonix.forum.model.LikedQuestion;
 import java.util.List;
 
 /**
- * Created by TI2 on 03/11/2016.
+ * Created by Felipe on 03/11/2016.
  */
 public interface LikedQuestionRepository extends SuperRepository<LikedQuestion> {
     List<LikedQuestion> findByDeadIsFalseAndQuestionId(String questionId);

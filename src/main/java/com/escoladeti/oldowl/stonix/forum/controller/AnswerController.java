@@ -62,7 +62,7 @@ public class AnswerController extends SuperController<Answer, AnswerRepository> 
 
     @RequestMapping(method = RequestMethod.GET, value = "/question/{id}")
     public List<Answer> getAnswersByQuestion(@PathVariable("id") final String id) {
-        return repository.findByQuestionIdAndDeadIsFalseOrderByNiceDesc(id);
+        return repository.findByQuestionIdAndDeadIsFalse(id);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "{questionId}/better/{answerId}")
@@ -79,17 +79,6 @@ public class AnswerController extends SuperController<Answer, AnswerRepository> 
                 return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
             }
         } catch (NullPointerException e) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
-
-    @RequestMapping(method = RequestMethod.GET, value = "/nice/{id}")
-    public ResponseEntity<Answer> nice(@PathVariable final String id) {
-        try{
-            Answer answer = repository.findOne(id);
-            answer.setNice(answer.getNice() + 1);
-            return new ResponseEntity<>(repository.save(answer), HttpStatus.OK);
-        }catch (NullPointerException e){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }

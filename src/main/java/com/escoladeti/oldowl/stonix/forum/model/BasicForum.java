@@ -18,7 +18,6 @@ public abstract class BasicForum extends Forum {
 
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date lastUpdate;
-    private Integer nice;
 
     @ManyToOne
     private User user;
@@ -33,16 +32,8 @@ public abstract class BasicForum extends Forum {
 
     public BasicForum() {
         this.lastUpdate = new Date(System.currentTimeMillis());
-        this.nice = 0;
     }
 
-    public Integer getNice() {
-        return nice;
-    }
-
-    public void setNice(Integer nice) {
-        this.nice = nice;
-    }
 
     public Date getLastUpdate() {
         return lastUpdate;
