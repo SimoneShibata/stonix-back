@@ -11,7 +11,7 @@
             <column name="password" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="image_profile" type="text">
+            <column name="image_profile" type="longtext">
                 <constraints nullable="true"/>
             </column>
         </addColumn>

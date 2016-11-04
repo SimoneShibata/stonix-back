@@ -5,6 +5,7 @@ import com.google.common.base.Objects;
 
 import javax.persistence.Entity;
 import java.io.File;
+import java.util.Base64;
 import java.util.Date;
 
 /**
