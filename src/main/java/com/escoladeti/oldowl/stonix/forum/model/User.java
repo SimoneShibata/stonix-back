@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.common.base.Objects;
 
 import javax.persistence.Entity;
+import java.io.File;
 import java.util.Date;
 
 /**
@@ -20,8 +21,7 @@ public class User extends SuperEntity {
     private Integer level;
     private Integer punctuation;
     private String password;
-
-    private String image;
+    private String imageProfile;
     private Boolean tutor;
 
     public User() {
@@ -30,6 +30,14 @@ public class User extends SuperEntity {
         this.xpForNextLevel = 40;
         this.level = 0;
         this.tutor = false;
+    }
+
+    public String getImageProfile() {
+        return imageProfile;
+    }
+
+    public void setImageProfile(String imageProfile) {
+        this.imageProfile = imageProfile;
     }
 
     public Integer getXp() {
@@ -70,14 +78,6 @@ public class User extends SuperEntity {
 
     public void setPunctuation(Integer punctuation) {
         this.punctuation = punctuation;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
     }
 
     public void setPassword(String password) {
@@ -158,7 +158,6 @@ public class User extends SuperEntity {
                 ", level=" + level +
                 ", punctuation=" + punctuation +
                 ", password='" + password + '\'' +
-                ", image='" + image + '\'' +
                 '}';
     }
 }
