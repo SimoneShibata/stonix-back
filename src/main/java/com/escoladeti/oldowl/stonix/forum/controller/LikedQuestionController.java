@@ -35,4 +35,11 @@ public class LikedQuestionController extends SuperController<LikedQuestion, Like
     public ResponseEntity<List<LikedQuestion>> getByUser(@PathVariable("id") final String id) {
         return new ResponseEntity<>(repository.findByDeadIsFalseAndUserId(id), HttpStatus.OK);
     }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/find/like-user-question")
+    public ResponseEntity<LikedQuestion> getLikeByUserAndQuestion(@RequestBody final LikedQuestion likedQuestion) {
+        return new ResponseEntity<>(repository.findByDeadIsFalseAndUserIdAndQuestionId(
+                likedQuestion.getUser().getId(), likedQuestion.getQuestion().getId()
+        ), HttpStatus.OK);
+    }
 }

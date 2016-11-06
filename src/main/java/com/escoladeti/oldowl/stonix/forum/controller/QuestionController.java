@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import java.lang.NullPointerException;
+
 import java.util.Date;
 import java.util.List;
 
@@ -46,40 +46,40 @@ public class QuestionController extends SuperController<Question, QuestionReposi
     @Override
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
     public ResponseEntity<Question> getOne(@PathVariable final String id) {
-        try{
-        Question question = repository.findOne(id);
-        question.setViews(question.getViews() + 1);
-        return new ResponseEntity<>(repository.save(question), HttpStatus.OK);
-        }catch (NullPointerException e){
+        try {
+            Question question = repository.findOne(id);
+            question.setViews(question.getViews() + 1);
+            return new ResponseEntity<>(repository.save(question), HttpStatus.OK);
+        } catch (NullPointerException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/{id}/answers")
-    public ResponseEntity<Question> postAnswer(@PathVariable("id") final String id, @RequestBody Answer answer){
+    public ResponseEntity<Question> postAnswer(@PathVariable("id") final String id, @RequestBody Answer answer) {
         Question question = repository.findOne(id);
         answer.setQuestion(question);
         return super.update(question);
     }
+
     @Override
-    @RequestMapping(method = RequestMethod.DELETE, value ="/{id}")
-    public ResponseEntity<Question> kill(@PathVariable("id") final String id){
+    @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
+    public ResponseEntity<Question> kill(@PathVariable("id") final String id) {
         Question question = repository.findOne(id);
-        try{
-            if (question.getAnswered().equals(true)){
+        try {
+            if (question.getAnswered().equals(true)) {
                 return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
-            }else {
+            } else {
                 return super.kill(id);
             }
-        }catch (NullPointerException e){
+        } catch (NullPointerException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/user/{id}")
-    public ResponseEntity<List<Question>> listQuestionsByUser(@PathVariable("id") final String userId){
+    public ResponseEntity<List<Question>> listQuestionsByUser(@PathVariable("id") final String userId) {
         List<Question> questions = repository.findByDeadIsFalseAndUserIdOrderByLastUpdateDesc(userId);
         return new ResponseEntity<>(questions, HttpStatus.OK);
     }
-
 }

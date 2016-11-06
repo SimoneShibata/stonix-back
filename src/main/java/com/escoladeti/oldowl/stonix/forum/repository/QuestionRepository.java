@@ -12,4 +12,6 @@ public interface QuestionRepository extends SuperRepository<Question> {
     List<Question> findAllByDeadIsFalseOrderByLastUpdateDesc();
 
     List<Question> findByDeadIsFalseAndUserIdOrderByLastUpdateDesc(String userId);
+
+
 }
