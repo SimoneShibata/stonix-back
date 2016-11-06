@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * Created by Felipe on 28/05/2016.
  */
@@ -48,5 +50,11 @@ public class ClassRoomController extends SuperController<ClassRoom, ClassRoomRep
         ClassRoom classRoom = repository.findOne(classRoomId);
         classRoom.removeStudent(studentId);
         return update(classRoom);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/teacher/{teacherId}")
+    public ResponseEntity<List<ClassRoom>> getByTeacher(@PathVariable("teacherId") final String teacherId) {
+
+        return new ResponseEntity<>(repository.findByDeadIsFalseAndTeacherId(teacherId), HttpStatus.OK);
     }
 }
