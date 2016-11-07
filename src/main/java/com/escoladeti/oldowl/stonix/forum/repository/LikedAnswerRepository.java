@@ -10,4 +10,6 @@ import java.util.List;
 public interface LikedAnswerRepository extends SuperRepository<LikedAnswer> {
     List<LikedAnswer> findByDeadIsFalseAndAnswerId(String answer);
     List<LikedAnswer> findByDeadIsFalseAndUserId(String userId);
+
+    LikedAnswer findByDeadIsFalseAndUserIdAndAnswerId(String userId, String answerId);
 }
