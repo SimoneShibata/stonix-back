@@ -1,9 +1,7 @@
 package com.escoladeti.oldowl.stonix.security;
 
-import com.escoladeti.oldowl.stonix.security.jwt.AuthenticatedUser;
 import com.escoladeti.oldowl.stonix.security.jwt.JWTAuthenticationFilter;
 import com.escoladeti.oldowl.stonix.security.jwt.JWTLoginFilter;
-import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -16,9 +14,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import org.springframework.web.filter.CorsFilter;
-
-import java.util.Arrays;
 
 @Configuration
 @EnableWebSecurity
