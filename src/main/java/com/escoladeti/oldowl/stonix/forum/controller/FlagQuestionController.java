@@ -51,7 +51,7 @@ public class FlagQuestionController extends SuperController<FlagQuestion, FlagQu
         }
         totalPunctuationOnFlag = totalPunctuationOnFlag + flagQuestion.getUser().getPunctuation();
         ResponseEntity<FlagQuestion> created = super.create(flagQuestion);
-        if(totalPunctuationOnFlag > (2 * flagQuestion.getQuestion().getUser().getPunctuation())) {
+        if(totalPunctuationOnFlag > (4 * flagQuestion.getQuestion().getUser().getPunctuation())) {
             User user = userRepository.findOne(flagQuestion.getQuestion().getUser().getId());
             user.setPunctuation(user.getPunctuation() - 10);
             userRepository.save(user);
