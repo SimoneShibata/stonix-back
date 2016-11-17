@@ -17,6 +17,9 @@
             <column name="dead" type="boolean">
                 <constraints nullable="false"/>
             </column>
+            <column name="task_option_id" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
         <addForeignKeyConstraint baseColumnNames="user_id"
                                  baseTableName="task_answered"
@@ -34,5 +37,13 @@
                                  deleteCascade="true"
                                  referencedColumnNames="id"
                                  referencedTableName="task"/>
+        <addForeignKeyConstraint baseColumnNames="task_option_id"
+                                 baseTableName="task_answered"
+                                 constraintName="fk_task_answered_task_option"
+                                 deferrable="false"
+                                 initiallyDeferred="false"
+                                 deleteCascade="true"
+                                 referencedColumnNames="id"
+                                 referencedTableName="task_option"/>
     </changeSet>
 </databaseChangeLog>

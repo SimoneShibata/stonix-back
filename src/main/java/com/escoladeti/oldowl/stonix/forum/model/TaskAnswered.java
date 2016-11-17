@@ -2,6 +2,7 @@ package com.escoladeti.oldowl.stonix.forum.model;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 /**
  * Created by felipe on 10/11/16.
@@ -14,6 +15,17 @@ public class TaskAnswered extends SuperEntity {
 
     @ManyToOne
     private Task task;
+
+    @OneToOne
+    private TaskOption taskOption;
+
+    public TaskOption getTaskOption() {
+        return taskOption;
+    }
+
+    public void setTaskOption(TaskOption taskOption) {
+        this.taskOption = taskOption;
+    }
 
     public User getUser() {
         return user;
