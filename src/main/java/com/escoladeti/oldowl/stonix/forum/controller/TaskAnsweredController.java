@@ -31,7 +31,6 @@ public class TaskAnsweredController extends SuperController<TaskAnswered, TaskAn
     public ResponseEntity<TaskAnswered> getByUserIdAndTaskId(@RequestBody final TaskAnswered taskAnswered) {
         String userId = taskAnswered.getUser().getId();
         String taskId = taskAnswered.getTask().getId();
-        String taskOptionId = taskAnswered.getTaskOption().getId();
 
         return new ResponseEntity<>(repository.findByDeadIsFalseAndUserIdAndTaskId(userId, taskId),HttpStatus.OK);
     }
