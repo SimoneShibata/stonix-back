@@ -33,6 +33,6 @@ public class TaskAnsweredController extends SuperController<TaskAnswered, TaskAn
         String taskId = taskAnswered.getTask().getId();
         String taskOptionId = taskAnswered.getTaskOption().getId();
 
-        return new ResponseEntity<>(repository.findByDeadIsFalseAndUserIdAndTaskIdAndTaskOptionId(userId, taskId, taskOptionId),HttpStatus.OK);
+        return new ResponseEntity<>(repository.findByDeadIsFalseAndUserIdAndTaskId(userId, taskId),HttpStatus.OK);
     }
 }

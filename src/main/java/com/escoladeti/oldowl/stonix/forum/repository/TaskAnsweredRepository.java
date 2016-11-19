@@ -7,5 +7,5 @@ import com.escoladeti.oldowl.stonix.forum.model.TaskAnswered;
  */
 public interface TaskAnsweredRepository extends SuperRepository<TaskAnswered> {
 
-    TaskAnswered findByDeadIsFalseAndUserIdAndTaskIdAndTaskOptionId(String userId, String taskId, String taskOptionId);
+    TaskAnswered findByDeadIsFalseAndUserIdAndTaskId(String userId, String taskId);
 }
